@@ -1,103 +1,244 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monitoraggio & Risposta (MDR) - ArchiTech</title>
-  <link rel="stylesheet" href="./vars.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoraggio & Risposta (MDR) - ArchiSec Cybersecurity Solutions</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/auth.css">
+  
+  <!-- Scripts -->
   <script src="js/main.js" defer></script>
 </head>
-<body class="default-theme">
-  <header class="site-header">
-    <div class="site-container header-inner">
-      <a href="index.html" class="site-brand">ArchiTech</a>
-      <nav class="site-nav">
-        <a href="scopri.html">Scopri di più</a>
-        <div class="nav-dropdown">
-          <a href="#" class="dropdown-trigger">Features</a>
-          <div class="dropdown-menu">
-            <a href="security-assessment.html">Security Assessment</a>
-            <a href="vulnerability-fixing.html">Vulnerability Fixing</a>
-            <a href="monitoraggio-risposta.html" aria-current="page">Monitoraggio & Risposta</a>
-            <a href="implementazione-sicurezza.html">Implementazione Sicurezza</a>
+<body>
+  <div class="cyber-security-landing-page">
+    
+    <!-- Navigation Header -->
+    <nav class="site-header">
+      <div class="header-inner">
+        <div class="site-brand">
+          <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+          <span class="brand-text">ArchiSec</span>
+        </div>
+        <div class="site-nav">
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <div class="nav-dropdown">
+            <span class="dropdown-trigger nav-link">Features</span>
+            <img class="dropdown-arrow" src="frame0.svg" />
+            <div class="dropdown-menu">
+              <a href="security-assessment.html">Security Assessment</a>
+              <a href="vulnerability-fixing.html">Vulnerability Fixing</a>
+              <a href="monitoraggio-risposta.html" class="active">Monitoraggio & Risposta</a>
+              <a href="implementazione-sicurezza.html">Implementazione Sicurezza</a>
+            </div>
+          </div>
+          <a href="support.html" class="nav-link">Support</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <span class="nav-link">Partners</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" id="signupButton" type="button">Sign Up</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Service Hero Section -->
+    <section class="hero-section service-hero">
+      <div class="hero-background">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-main">Monitoraggio &</span>
+            <span class="hero-title-highlight">Risposta</span>
+          </h1>
+          <p class="hero-description">
+            Rilevamento 24/7, gestione degli alert e contenimento degli incidenti con team di esperti dedicato alla protezione continua della tua infrastruttura.
+          </p>
+          <div class="hero-actions">
+            <a href="contattaci.html" class="btn btn-primary">Attiva MDR</a>
+            <a href="pricing.html" class="btn btn-outline">Vedi Piani</a>
           </div>
         </div>
-        <a href="support.html">Support</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="contattaci.html">Contattaci</a>
-      </nav>
-    </div>
-  </header>
+      </div>
+    </section>
 
-  <main class="site-container site-main">
-    <h1 class="gradient-title">Monitoraggio & Risposta (MDR)</h1>
-    <p class="lead">Rilevamento 24/7, gestione degli alert e contenimento degli incidenti con team di esperti dedicato alla protezione continua della tua infrastruttura.</p>
+    <!-- Service Details Section -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Copertura Completa 24/7</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <div class="icon-circle">
+                <span>👁️</span>
+              </div>
+            </div>
+            <h3 class="service-title">Monitoraggio 24/7</h3>
+            <p class="service-description">Sorveglianza continua di reti, endpoint e applicazioni con tecnologie avanzate di threat detection.</p>
+          </div>
 
-    <section class="service-details">
-      <h2>Copertura Completa</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Monitoraggio 24/7</h3>
-          <p>Sorveglianza continua di reti, endpoint e applicazioni con tecnologie avanzate di threat detection.</p>
-        </div>
-        <div class="card">
-          <h3>Analisi e Triage</h3>
-          <p>I nostri analisti qualificati esaminano ogni alert, eliminando falsi positivi e prioritizzando le minacce reali.</p>
-        </div>
-        <div class="card">
-          <h3>Risposta Rapida</h3>
-          <p>Contenimento immediato degli incidenti con procedure automatizzate e intervento manuale quando necessario.</p>
-        </div>
-        <div class="card">
-          <h3>Reporting Mensile</h3>
-          <p>Report dettagliati con trend di sicurezza, KPI e raccomandazioni per migliorare la posture di sicurezza.</p>
+          <div class="service-card">
+            <div class="service-icon">
+              <div class="icon-circle">
+                <span>🔍</span>
+              </div>
+            </div>
+            <h3 class="service-title">Analisi e Triage</h3>
+            <p class="service-description">I nostri analisti qualificati esaminano ogni alert, eliminando falsi positivi e prioritizzando le minacce reali.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <div class="icon-circle">
+                <span>⚡</span>
+              </div>
+            </div>
+            <h3 class="service-title">Risposta Rapida</h3>
+            <p class="service-description">Contenimento immediato degli incidenti con procedure automatizzate e intervento manuale quando necessario.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <div class="icon-circle">
+                <span>📊</span>
+              </div>
+            </div>
+            <h3 class="service-title">Reporting Mensile</h3>
+            <p class="service-description">Report dettagliati con trend di sicurezza, KPI e raccomandazioni per migliorare la posture di sicurezza.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="pricing-box">
-      <h2>Piani MDR</h2>
-      <div class="price-grid">
-        <div class="price-item">
-          <h3>MDR Essenziale</h3>
-          <p class="price">€ 1.200/mese</p>
-          <ul>
-            <li>Monitoraggio 24/7</li>
-            <li>Alert triage</li>
-            <li>Risposta base agli incidenti</li>
-            <li>Report mensile</li>
-          </ul>
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Piani MDR</h2>
         </div>
-        <div class="price-item featured">
-          <h3>MDR Avanzato</h3>
-          <p class="price">€ 2.500/mese</p>
-          <ul>
-            <li>Tutto di Essenziale</li>
-            <li>Threat hunting proattivo</li>
-            <li>Forensics digitali</li>
-            <li>Consulenza strategica</li>
-            <li>SLA di risposta &lt; 15 min</li>
-          </ul>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="plan-name">MDR Essenziale</h3>
+              <div class="plan-price">
+                <span class="currency">€</span>
+                <span class="amount">1.200</span>
+                <span class="period">/mese</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><span class="feature-icon">✓</span> Monitoraggio 24/7</li>
+                <li><span class="feature-icon">✓</span> Alert triage</li>
+                <li><span class="feature-icon">✓</span> Risposta base agli incidenti</li>
+                <li><span class="feature-icon">✓</span> Report mensile</li>
+                <li><span class="feature-icon">✓</span> Supporto business hours</li>
+              </ul>
+            </div>
+            <div class="pricing-action">
+              <a class="btn btn-outline" href="contattaci.html">Inizia ora</a>
+            </div>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="featured-badge">Più Completo</div>
+            <div class="pricing-header">
+              <h3 class="plan-name">MDR Avanzato</h3>
+              <div class="plan-price">
+                <span class="currency">€</span>
+                <span class="amount">2.500</span>
+                <span class="period">/mese</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><span class="feature-icon">✓</span> Tutto di MDR Essenziale</li>
+                <li><span class="feature-icon">✓</span> Threat hunting proattivo</li>
+                <li><span class="feature-icon">✓</span> Forensics digitali</li>
+                <li><span class="feature-icon">✓</span> Consulenza strategica</li>
+                <li><span class="feature-icon">✓</span> SLA di risposta < 15 min</li>
+                <li><span class="feature-icon">✓</span> Supporto dedicato 24/7</li>
+              </ul>
+            </div>
+            <div class="pricing-action">
+              <a class="btn btn-primary" href="contattaci.html">Scegli Avanzato</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-actions">
+          <a class="btn btn-primary" href="contattaci.html">Richiedi una consulenza</a>
+          <a class="btn btn-outline" href="pricing.html">Confronta tutti i piani</a>
         </div>
       </div>
     </section>
 
-    <div class="actions">
-      <a class="btn btn-primary" href="consulenza.html">Richiedi una consulenza</a>
-      <a class="btn btn-outline" href="pricing.html">Confronta tutti i piani</a>
-    </div>
-  </main>
+    <!-- Footer -->
 
-  <footer class="site-footer">
-    <div class="site-container footer-inner">
-      <span>© 2025 ArchiTech</span>
-      <div class="footer-social">
-        <img src="social0.svg" alt="Social 1" />
-        <img src="social1.svg" alt="Social 2" />
-        <img src="social2.svg" alt="Social 3" />
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="site-brand">
+              <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+              <span class="brand-text">ArchiSec</span>
+            </div>
+            <p class="footer-description">
+              Protezione avanzata per il tuo business digitale. Soluzioni di cybersecurity professionali e personalizzate.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Servizi</h4>
+            <a href="security-assessment.html">Security Assessment</a>
+            <a href="vulnerability-fixing.html">Vulnerability Fixing</a>
+            <a href="monitoraggio-risposta.html">Monitoraggio</a>
+            <a href="implementazione-sicurezza.html">Implementazione</a>
+          </div>
+          <div class="footer-section">
+            <h4>Azienda</h4>
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="blog.html">Blog</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div class="footer-section">
+            <h4>Contatti</h4>
+            <a href="contattaci.html">Contattaci</a>
+            <a href="consulenza.html">Consulenza</a>
+            <span>info@archisec.tech</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2025 ArchiSec. All Rights Reserved</div>
+          <div class="footer-social">
+            <a href="#" class="social-icon"><img src="social0.svg" alt="LinkedIn" /></a>
+            <a href="#" class="social-icon"><img src="social1.svg" alt="Twitter" /></a>
+            <a href="#" class="social-icon"><img src="social2.svg" alt="GitHub" /></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+
+  </div>
+  
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js"></script>
+  
+  <!-- Custom Scripts -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>

@@ -1,10 +1,6 @@
-// Firebase Configuration Template
+// Firebase Configuration Template v8
 // Copia questo file come firebase-config.js e sostituisci i valori con quelli del tuo progetto
 // IMPORTANTE: Non committare mai firebase-config.js con le tue chiavi reali!
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 // Sostituisci questi placeholder con i tuoi valori reali
@@ -19,15 +15,16 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
 
-// Initialize Firebase Auth
+// Initialize Firebase services
 const auth = firebase.auth();
-
-// Initialize Firestore
 const db = firebase.firestore();
+const analytics = firebase.analytics();
+
+console.log('🔥 Firebase initialized successfully!');
 
 // Export per utilizzo in altri file
 window.auth = auth;
 window.db = db;
+window.analytics = analytics;

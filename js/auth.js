@@ -6,22 +6,41 @@ let loginModal = null;
 
 // Inizializzazione quando la pagina è caricata
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Auth.js caricato, controllo Firebase...');
+    
+    // Aspetta che Firebase sia disponibile
+    const checkFirebase = () => {
+        if (typeof firebase === 'undefined' || !window.auth) {
+            console.log('⏳ Aspetto Firebase...');
+            setTimeout(checkFirebase, 100);
+            return;
+        }
+        
+        console.log('✅ Firebase pronto, inizializzo auth...');
+        initializeAuth();
+    };
+    
+    checkFirebase();
+});
+
+// Funzione per inizializzare l'autenticazione
+function initializeAuth() {
     // Controlla lo stato dell'autenticazione
-    auth.onAuthStateChanged(user => {
+    window.auth.onAuthStateChanged(user => {
         if (user) {
             // Utente loggato
-            console.log('Utente loggato:', user.email);
+            console.log('👤 Utente loggato:', user.email);
             updateUIForLoggedInUser(user);
         } else {
             // Utente non loggato
-            console.log('Utente non loggato');
+            console.log('👤 Utente non loggato');
             updateUIForLoggedOutUser();
         }
     });
 
     // Inizializza i modali
     initModals();
-});
+}
 
 // Funzione per inizializzare i modali
 function initModals() {
@@ -172,7 +191,7 @@ async function handleSignup(e) {
         successDiv.textContent = '';
         
         // Crea account Firebase
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const userCredential = await window.auth.createUserWithEmailAndPassword(email, password);
         const user = userCredential.user;
         
         // Salva dati aggiuntivi in Firestore
@@ -209,7 +228,7 @@ async function handleLogin(e) {
     try {
         errorDiv.textContent = '';
         
-        await auth.signInWithEmailAndPassword(email, password);
+        await window.auth.signInWithEmailAndPassword(email, password);
         closeLoginModal();
         
     } catch (error) {
@@ -221,7 +240,7 @@ async function handleLogin(e) {
 // Logout
 async function handleLogout() {
     try {
-        await auth.signOut();
+        await window.auth.signOut();
         console.log('Logout effettuato');
     } catch (error) {
         console.error('Errore logout:', error);

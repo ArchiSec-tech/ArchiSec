@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richiedi una consulenza - ArchiTech</title>
+  <link rel="stylesheet" href="./vars.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="js/main.js" defer></script>
+</head>
+<body class="default-theme">
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="site-brand">ArchiTech</a>
+      <nav class="site-nav">
+        <a href="scopri.html">Scopri di più</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contattaci.html">Contattaci</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-container site-main">
+    <h1 class="gradient-title">Richiedi una consulenza</h1>
+    <p class="lead">Hai bisogno di aiuto immediato o vuoi capire quale piano fa per te? Compila il modulo: ti ricontattiamo a breve.</p>
+
+    <form class="form" netlify>
+      <div class="field">
+        <label for="azienda">Azienda</label>
+        <input id="azienda" name="azienda" type="text" />
+      </div>
+      <div class="field">
+        <label for="contatto">Nome e Cognome</label>
+        <input id="contatto" name="contatto" type="text" required />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+      <div class="field">
+        <label for="piano">Piano di interesse</label>
+        <select id="piano" name="piano">
+          <option value="start">Start</option>
+          <option value="pro">Pro</option>
+          <option value="enterprise">Enterprise</option>
+          <option value="da-definire" selected>Da definire</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="note">Note</label>
+        <textarea id="note" name="note" rows="5"></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Invia richiesta</button>
+        <a class="btn btn-outline" href="pricing.html">Torna al Pricing</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container footer-inner">
+      <span>© 2025 ArchiTech</span>
+      <div class="footer-social">
+        <img src="social0.svg" alt="Social 1" />
+        <img src="social1.svg" alt="Social 2" />
+        <img src="social2.svg" alt="Social 3" />
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

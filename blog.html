@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & News - ArchiSec Cybersecurity</title>
+  <meta name="description" content="Resta aggiornato sulle ultime novità in cybersecurity, AI e sicurezza informatica. Blog e approfondimenti tecnici di ArchiSec.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/auth.css">
+  
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
+  <script src="js/blog.js" defer></script>
+</head>
+<body>
+  <div class="cyber-security-landing-page">
+    
+    <!-- Navigation Header -->
+    <nav class="site-header">
+      <div class="header-inner">
+        <div class="site-brand">
+          <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+          <span class="brand-text">ArchiSec</span>
+        </div>
+        <div class="site-nav">
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <div class="nav-dropdown">
+            <span class="dropdown-trigger nav-link">Features</span>
+            <img class="dropdown-arrow" src="frame0.svg" />
+            <div class="dropdown-menu">
+              <a href="security-assessment.html">Security Assessment</a>
+              <a href="vulnerability-fixing.html">Vulnerability Fixing</a>
+              <a href="monitoraggio-risposta.html">Monitoraggio & Risposta</a>
+              <a href="implementazione-sicurezza.html">Implementazione Sicurezza</a>
+            </div>
+          </div>
+          <a href="support.html" class="nav-link">Support</a>
+          <a href="blog.html" class="nav-link active">Blog</a>
+          <span class="nav-link">Partners</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" id="signupButton" type="button">Sign Up</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="hero-section blog-hero">
+      <div class="hero-background">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-main">Blog &</span>
+            <span class="hero-title-highlight">Insights</span>
+          </h1>
+          <p class="hero-description">
+            Approfondimenti, novità e trend del mondo cybersecurity. Resta sempre aggiornato con gli esperti di ArchiSec.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article Section -->
+    <section class="featured-article">
+      <div class="featured-content">
+        <div class="featured-text">
+          <span class="article-category">Innovazione</span>
+          <h2>L'AI nella Cybersecurity: Il Futuro è Oggi</h2>
+          <p class="article-excerpt">
+            L'intelligenza artificiale sta rivoluzionando il panorama della sicurezza informatica. 
+            Scopri come ArchiTech integra tecnologie AI avanzate per offrire protezione predittiva 
+            e rilevamento automatico delle minacce in tempo reale.
+          </p>
+          <div class="article-meta">
+            <span class="article-date">28 Agosto 2025</span>
+            <span class="article-read-time">5 min di lettura</span>
+          </div>
+          <a href="#ai-article" class="btn btn-primary">Leggi l'articolo</a>
+        </div>
+        <div class="featured-image">
+          <img src="images/ai-chip.png" alt="Chip AI per cybersecurity" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Articles Grid -->
+    <section class="blog-grid">
+      <!-- Primo Articolo -->
+      <article class="blog-card" data-category="ai">
+        <div class="card-image">
+          <img src="images/markus-spiske-iar-afB0QQw-unsplash.jpg" alt="AI e Machine Learning" />
+          <span class="card-category">AI</span>
+        </div>
+        <div class="card-content">
+          <h3>Machine Learning per il Rilevamento Avanzato delle Minacce Zero-Day</h3>
+          <p>Gli algoritmi di machine learning stanno rivoluzionando la cybersecurity aziendale. In questo approfondimento tecnico, esploriamo come ArchiTech utilizza reti neurali profonde e analisi comportamentale per identificare minacce sconosciute in tempo reale. Il nostro sistema analizza oltre 10 milioni di eventi di sicurezza al giorno, riducendo i falsi positivi dell'87% e aumentando il tasso di rilevamento delle minacce avanzate del 94% rispetto ai sistemi tradizionali.</p>
+          <div class="card-meta">
+            <span class="card-date">25 Agosto 2025</span>
+            <span class="card-read-time">12 min</span>
+          </div>
+          <a href="#" class="card-link">Leggi l'articolo completo</a>
+        </div>
+      </article>
+
+      <!-- Secondo Articolo -->
+      <article class="blog-card" data-category="security">
+        <div class="card-image">
+          <img src="images/towfiqu-barbhuiya-em5w9_xj3uU-unsplash.jpg" alt="Zero Trust Architecture" />
+          <span class="card-category">Security</span>
+        </div>
+        <div class="card-content">
+          <h3>Implementazione Pratica dell'Architettura Zero Trust: Case Study Aziendale</h3>
+          <p>L'architettura Zero Trust non è più un concetto teorico ma una necessità pratica per le aziende moderne. Questo case study dettagliato documenta come abbiamo implementato una strategia Zero Trust completa per un cliente del settore finanziario con 2.500 endpoint. Dall'analisi iniziale dei rischi alla segmentazione della rete, dalla gestione delle identità privilegiate all'implementazione di policy di accesso condizionale, scopri le sfide reali e le soluzioni pratiche per proteggere efficacemente l'infrastruttura IT moderna.</p>
+          <div class="card-meta">
+            <span class="card-date">20 Agosto 2025</span>
+            <span class="card-read-time">15 min</span>
+          </div>
+          <a href="#" class="card-link">Leggi l'articolo completo</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="newsletter-section">
+      <div class="newsletter-container">
+        <div class="newsletter-content">
+          <h2>Rimani sempre aggiornato</h2>
+          <p>Iscriviti alla nostra newsletter per ricevere i migliori articoli sulla cybersecurity direttamente nella tua inbox.</p>
+          <form class="newsletter-form">
+            <div class="form-group">
+              <input type="email" placeholder="La tua email" required />
+              <button type="submit" class="btn btn-primary">Iscriviti</button>
+            </div>
+            <p class="privacy-note">Rispettiamo la tua privacy. Nessuno spam, solo contenuti di qualità.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed AI Article -->
+    <article id="ai-article" class="full-article">
+      <header class="article-header">
+        <div class="article-hero-bg">
+          <img src="images/ai-chip.png" alt="AI Chip Background" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="article-hero-content">
+          <span class="article-category large">Innovazione</span>
+          <h1>L'AI nella Cybersecurity: Il Futuro è Oggi</h1>
+          <div class="article-meta large">
+            <span class="article-author">Team ArchiTech</span>
+            <span class="article-date">28 Agosto 2025</span>
+            <span class="article-read-time">5 minuti di lettura</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="article-content">
+        <div class="content-wrapper">
+          <section class="article-section">
+            <h2>L'Evoluzione della Minaccia Digitale</h2>
+            <p>
+              Nel panorama digitale odierno, le minacce informatiche evolvono a un ritmo esponenziale. 
+              Gli attaccanti utilizzano tecniche sempre più sofisticate, rendendo i sistemi di sicurezza 
+              tradizionali inadeguati per affrontare le nuove sfide.
+            </p>
+            <p>
+              È qui che entra in gioco l'intelligenza artificiale: non più solo un concetto futuristico, 
+              ma una realtà concreta che sta trasformando il modo in cui proteggiamo le nostre infrastrutture digitali.
+            </p>
+          </section>
+
+          <section class="article-section">
+            <h2>Come ArchiTech Integra l'AI</h2>
+            <div class="ai-features">
+              <div class="ai-feature">
+                <div class="feature-icon">🧠</div>
+                <h3>Machine Learning Predittivo</h3>
+                <p>I nostri algoritmi analizzano pattern di comportamento per identificare minacce prima che si manifestino.</p>
+              </div>
+              <div class="ai-feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Risposta Automatizzata</h3>
+                <p>Sistemi AI che reagiscono in tempo reale, isolando minacce e applicando contromisure immediate.</p>
+              </div>
+              <div class="ai-feature">
+                <div class="feature-icon">🔍</div>
+                <h3>Analisi Comportamentale</h3>
+                <p>Rilevamento di anomalie attraverso l'analisi continua del comportamento degli utenti e dei sistemi.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-section">
+            <h2>Vantaggi Concreti per la Tua Azienda</h2>
+            <ul class="benefits-list">
+              <li><strong>Rilevamento Precoce:</strong> Identificazione delle minacce fino al 90% più veloce rispetto ai metodi tradizionali</li>
+              <li><strong>Riduzione False Alarm:</strong> Algoritmi intelligenti che riducono i falsi positivi dell'85%</li>
+              <li><strong>Protezione 24/7:</strong> Monitoraggio continuo automatizzato che non si ferma mai</li>
+              <li><strong>Adattamento Continuo:</strong> Sistemi che apprendono e si evolvono con le nuove minacce</li>
+            </ul>
+          </section>
+
+          <section class="article-section">
+            <h2>Il Futuro è Adesso</h2>
+            <p>
+              L'integrazione dell'AI nella cybersecurity non è più una questione di "se", ma di "quando". 
+              Le aziende che adottano oggi queste tecnologie saranno quelle meglio preparate per affrontare 
+              le sfide di sicurezza di domani.
+            </p>
+            <div class="cta-box">
+              <h3>Vuoi saperne di più?</h3>
+              <p>Scopri come ArchiTech può implementare soluzioni AI nella tua infrastruttura di sicurezza.</p>
+              <a href="consulenza.html" class="btn btn-primary">Richiedi una Consulenza</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container footer-inner">
+      <span>© 2025 ArchiTech</span>
+      <div class="footer-social">
+        <img src="social0.svg" alt="Social 1" />
+        <img src="social1.svg" alt="Social 2" />
+        <img src="social2.svg" alt="Social 3" />
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

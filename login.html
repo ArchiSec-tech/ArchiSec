@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accedi - ArchiTech</title>
+    <link rel="stylesheet" href="./vars.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/auth.css">
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .login-header {
+            background: #28a745;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .login-header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .login-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <a href="index.html" class="back-to-home">← Torna alla Home</a>
+        
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Bentornato</h1>
+                <p>Accedi al tuo account ArchiTech</p>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                
+                <button type="submit" class="auth-btn">Accedi</button>
+                
+                <div class="forgot-password">
+                    <a href="#" id="forgotPasswordLink">Password dimenticata?</a>
+                </div>
+                
+                <div class="auth-switch">
+                    Non hai un account? <a href="signup.html">Registrati qui</a>
+                </div>
+            </form>
+            
+            <div id="loginError" class="error-message" style="display: none;"></div>
+            <div id="loginSuccess" class="success-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        // Gestione login per la pagina dedicata
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('loginForm');
+            const errorDiv = document.getElementById('loginError');
+            const successDiv = document.getElementById('loginSuccess');
+            const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+            
+            // Gestione form di login
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                try {
+                    // Nascondi messaggi precedenti
+                    errorDiv.style.display = 'none';
+                    successDiv.style.display = 'none';
+                    
+                    // Login con Firebase
+                    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                    
+                    // Mostra successo
+                    successDiv.textContent = 'Login effettuato! Reindirizzamento in corso...';
+                    successDiv.style.display = 'block';
+                    
+                    // Reindirizza dopo 1 secondo
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                    
+                } catch (error) {
+                    console.error('Errore login:', error);
+                    errorDiv.textContent = getErrorMessage(error.code);
+                    errorDiv.style.display = 'block';
+                }
+            });
+            
+            // Gestione password dimenticata
+            forgotPasswordLink.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                
+                if (!email) {
+                    errorDiv.textContent = 'Inserisci prima la tua email nel campo sopra.';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                try {
+                    await auth.sendPasswordResetEmail(email);
+                    successDiv.textContent = 'Email di reset inviata! Controlla la tua casella di posta.';
+                    successDiv.style.display = 'block';
+                    errorDiv.style.display = 'none';
+                } catch (error) {
+                    console.error('Errore reset password:', error);
+                    errorDiv.textContent = getErrorMessage(error.code);
+                    errorDiv.style.display = 'block';
+                }
+            });
+            
+            // Funzione per tradurre errori
+            function getErrorMessage(errorCode) {
+                switch (errorCode) {
+                    case 'auth/user-not-found':
+                        return 'Utente non trovato.';
+                    case 'auth/wrong-password':
+                        return 'Password errata.';
+                    case 'auth/invalid-email':
+                        return 'Email non valida.';
+                    case 'auth/user-disabled':
+                        return 'Account disabilitato.';
+                    case 'auth/too-many-requests':
+                        return 'Troppi tentativi. Riprova più tardi.';
+                    default:
+                        return 'Errore: ' + errorCode;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

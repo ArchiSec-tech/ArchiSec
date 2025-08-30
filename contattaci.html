@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contattaci - ArchiSec Cybersecurity Solutions</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/auth.css">
+  
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="cyber-security-landing-page">
+    
+    <!-- Navigation Header -->
+    <nav class="site-header">
+      <div class="header-inner">
+        <div class="site-brand">
+          <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+          <span class="brand-text">ArchiSec</span>
+        </div>
+        <div class="site-nav">
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <div class="nav-dropdown">
+            <span class="dropdown-trigger nav-link">Features</span>
+            <img class="dropdown-arrow" src="frame0.svg" />
+            <div class="dropdown-menu">
+              <a href="security-assessment.html">Security Assessment</a>
+              <a href="vulnerability-fixing.html">Vulnerability Fixing</a>
+              <a href="monitoraggio-risposta.html">Monitoraggio & Risposta</a>
+              <a href="implementazione-sicurezza.html">Implementazione Sicurezza</a>
+            </div>
+          </div>
+          <a href="support.html" class="nav-link">Support</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <span class="nav-link">Partners</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" id="signupButton" type="button">Sign Up</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="hero-section contact-hero">
+      <div class="hero-background">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-highlight">Contattaci</span>
+          </h1>
+          <p class="hero-description">
+            Parlaci delle tue esigenze di sicurezza. I nostri esperti ti risponderanno rapidamente con una soluzione personalizzata.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-form-container">
+            <form class="contact-form" netlify>
+              <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input id="nome" name="nome" type="text" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div class="form-group">
+                <label for="azienda">Azienda (Opzionale)</label>
+                <input id="azienda" name="azienda" type="text" />
+              </div>
+              <div class="form-group">
+                <label for="servizio">Servizio di Interesse</label>
+                <select id="servizio" name="servizio" required>
+                  <option value="">Seleziona un servizio</option>
+                  <option value="security-assessment">Security Assessment</option>
+                  <option value="vulnerability-fixing">Vulnerability Fixing</option>
+                  <option value="monitoraggio">Monitoraggio & Risposta</option>
+                  <option value="implementazione">Implementazione Sicurezza</option>
+                  <option value="consulenza">Consulenza Generale</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="messaggio">Descrivi le tue esigenze</label>
+                <textarea id="messaggio" name="messaggio" rows="6" required placeholder="Raccontaci del tuo progetto e delle tue necessità di sicurezza..."></textarea>
+              </div>
+              <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Invia</button>
+        <a class="btn btn-outline" href="pricing.html">Vedi Pricing</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container footer-inner">
+      <span>© 2025 ArchiTech</span>
+      <div class="footer-social">
+        <img src="social0.svg" alt="Social 1" />
+        <img src="social1.svg" alt="Social 2" />
+        <img src="social2.svg" alt="Social 3" />
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

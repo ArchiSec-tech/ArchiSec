@@ -267,5 +267,28 @@
       }
     });
   </script>
+    <script>
+      // Firebase config injection point.
+      // Replace these placeholders at build/deploy time with real values.
+      // Recommended: inject via CI/CD secrets into the generated HTML or
+      // generate a temporary js/firebase-config.local.js in the build step.
+      window.__FIREBASE_CONFIG__ = {
+        apiKey: "YOUR_API_KEY_HERE",
+        authDomain: "your-project.firebaseapp.com",
+        projectId: "your-project-id",
+        storageBucket: "your-project.firebasestorage.app",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID",
+        measurementId: "YOUR_MEASUREMENT_ID"
+      };
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+    <script src="js/firebase-config.js"></script>
+
 </body>
 </html>

@@ -18,6 +18,7 @@ Thumbs.db
 
 # Firebase configuration (contains sensitive data)
 js/firebase-config.js
+js/firebase-config.local.js
 
 # Backup files
 *-backup.*

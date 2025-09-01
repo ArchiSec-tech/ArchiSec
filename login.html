@@ -91,6 +91,18 @@
         .forgot-password a:hover {
             text-decoration: underline;
         }
+
+        header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        header img {
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -98,6 +110,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFV46D4V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    
+    <header>
+        <a href="index.html">
+            <img src="Logo minimal ArchiSec.png" alt="ArchiSec Home" style="height:50px;">
+        </a>
+    </header>
+    
     <div class="login-page">
         <a href="index.html" class="back-to-home">← Torna alla Home</a>
         
@@ -133,12 +152,13 @@
         </div>
     </div>
 
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js"></script>
+    <!-- Firebase Scripts (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
     
-    <!-- Custom Scripts -->
+    <!-- Firebase Config Loader -->
     <script src="js/firebase-config.js"></script>
     <script>
         // Gestione login per la pagina dedicata
@@ -160,16 +180,24 @@
                     errorDiv.style.display = 'none';
                     successDiv.style.display = 'none';
                     
+                    // Ensure Firebase Auth is initialized
+                    const authInstance = window.auth;
+                    if (!authInstance) {
+                        errorDiv.textContent = 'Servizio di autenticazione non pronto. Riprova tra qualche secondo.';
+                        errorDiv.style.display = 'block';
+                        return;
+                    }
+                    
                     // Login con Firebase
-                    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                    const userCredential = await authInstance.signInWithEmailAndPassword(email, password);
                     
                     // Mostra successo
                     successDiv.textContent = 'Login effettuato! Reindirizzamento in corso...';
                     successDiv.style.display = 'block';
                     
-                    // Reindirizza dopo 1 secondo
+                    // Reindirizza alla dashboard dopo 1 secondo
                     setTimeout(() => {
-                        window.location.href = 'index.html';
+                        window.location.href = 'dashboard.html';
                     }, 1000);
                     
                 } catch (error) {
@@ -192,7 +220,7 @@
                 }
                 
                 try {
-                    await auth.sendPasswordResetEmail(email);
+                    await window.auth.sendPasswordResetEmail(email);
                     successDiv.textContent = 'Email di reset inviata! Controlla la tua casella di posta.';
                     successDiv.style.display = 'block';
                     errorDiv.style.display = 'none';

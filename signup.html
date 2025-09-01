@@ -127,12 +127,13 @@
         </div>
     </div>
 
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js"></script>
+    <!-- Firebase Scripts (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
     
-    <!-- Custom Scripts -->
+    <!-- Firebase Config Loader -->
     <script src="js/firebase-config.js"></script>
     <script>
         // Gestione registrazione per la pagina dedicata
@@ -150,17 +151,26 @@
                 const company = document.getElementById('signupCompany').value;
                 const phone = document.getElementById('signupPhone').value;
                 
-                try {
+                    try {
                     // Nascondi messaggi precedenti
                     errorDiv.style.display = 'none';
                     successDiv.style.display = 'none';
-                    
+
+                    // Ensure Firebase Auth/Firestore are initialized
+                    const authInstance = window.auth;
+                    const dbInstance = window.db;
+                    if (!authInstance || !dbInstance) {
+                        errorDiv.textContent = 'Servizio di autenticazione non pronto. Riprova tra qualche secondo.';
+                        errorDiv.style.display = 'block';
+                        return;
+                    }
+
                     // Crea account Firebase
-                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    const userCredential = await authInstance.createUserWithEmailAndPassword(email, password);
                     const user = userCredential.user;
                     
                     // Salva dati aggiuntivi in Firestore
-                    await db.collection('users').doc(user.uid).set({
+                    await dbInstance.collection('users').doc(user.uid).set({
                         name: name,
                         email: email,
                         company: company || '',

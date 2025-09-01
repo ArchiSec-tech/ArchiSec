@@ -46,8 +46,10 @@
     <nav class="site-header">
       <div class="header-inner">
         <div class="site-brand">
-          <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
-          <span class="brand-text">ArchiSec</span>
+          <a href="index.html" class="brand-link">
+            <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+            <span class="brand-text">ArchiSec</span>
+          </a>
         </div>
         <div class="site-nav">
           <a href="pricing.html" class="nav-link">Pricing</a>
@@ -115,39 +117,91 @@
 
     <!-- Blog Articles Grid -->
     <section class="blog-grid">
-      <!-- Primo Articolo -->
-      <article class="blog-card" data-category="ai">
-        <div class="card-image">
-          <img src="images/markus-spiske-iar-afB0QQw-unsplash.jpg" alt="AI e Machine Learning" />
-          <span class="card-category">AI</span>
-        </div>
-        <div class="card-content">
-          <h3>Machine Learning per il Rilevamento Avanzato delle Minacce Zero-Day</h3>
-          <p>Gli algoritmi di machine learning stanno rivoluzionando la cybersecurity aziendale. In questo approfondimento tecnico, esploriamo come ArchiTech utilizza reti neurali profonde e analisi comportamentale per identificare minacce sconosciute in tempo reale. Il nostro sistema analizza oltre 10 milioni di eventi di sicurezza al giorno, riducendo i falsi positivi dell'87% e aumentando il tasso di rilevamento delle minacce avanzate del 94% rispetto ai sistemi tradizionali.</p>
-          <div class="card-meta">
-            <span class="card-date">25 Agosto 2025</span>
-            <span class="card-read-time">12 min</span>
+      <div class="container">
+        <!-- Primo Articolo -->
+        <article class="blog-card" data-category="ai">
+          <div class="card-image">
+            <img src="images/markus-spiske-iar-afB0QQw-unsplash.jpg" alt="AI e Machine Learning" />
+            <span class="card-category">AI</span>
           </div>
-          <a href="#" class="card-link">Leggi l'articolo completo</a>
-        </div>
-      </article>
+          <div class="card-content">
+            <h3>Machine Learning per il Rilevamento Avanzato delle Minacce Zero-Day</h3>
+            <p>Gli algoritmi di machine learning stanno rivoluzionando la cybersecurity aziendale. In questo approfondimento tecnico, esploriamo come ArchiSec utilizza reti neurali profonde e analisi comportamentale per identificare minacce sconosciute in tempo reale.</p>
+            <div class="article-stats">
+              <span class="stat">🎯 94% accuracy nel rilevamento</span>
+              <span class="stat">⚡ 87% riduzione falsi positivi</span>
+            </div>
+            <div class="card-meta">
+              <span class="card-date">25 Agosto 2025</span>
+              <span class="card-read-time">12 min</span>
+            </div>
+            <a href="#ai-article" class="card-link btn btn-outline">Leggi l'articolo completo</a>
+          </div>
+        </article>
 
-      <!-- Secondo Articolo -->
-      <article class="blog-card" data-category="security">
-        <div class="card-image">
-          <img src="images/towfiqu-barbhuiya-em5w9_xj3uU-unsplash.jpg" alt="Zero Trust Architecture" />
-          <span class="card-category">Security</span>
-        </div>
-        <div class="card-content">
-          <h3>Implementazione Pratica dell'Architettura Zero Trust: Case Study Aziendale</h3>
-          <p>L'architettura Zero Trust non è più un concetto teorico ma una necessità pratica per le aziende moderne. Questo case study dettagliato documenta come abbiamo implementato una strategia Zero Trust completa per un cliente del settore finanziario con 2.500 endpoint. Dall'analisi iniziale dei rischi alla segmentazione della rete, dalla gestione delle identità privilegiate all'implementazione di policy di accesso condizionale, scopri le sfide reali e le soluzioni pratiche per proteggere efficacemente l'infrastruttura IT moderna.</p>
-          <div class="card-meta">
-            <span class="card-date">20 Agosto 2025</span>
-            <span class="card-read-time">15 min</span>
+        <!-- Secondo Articolo -->
+        <article class="blog-card" data-category="security">
+          <div class="card-image">
+            <img src="images/towfiqu-barbhuiya-em5w9_xj3uU-unsplash.jpg" alt="Zero Trust Architecture" />
+            <span class="card-category">Security</span>
           </div>
-          <a href="#" class="card-link">Leggi l'articolo completo</a>
-        </div>
-      </article>
+          <div class="card-content">
+            <h3>Implementazione Pratica dell'Architettura Zero Trust: Case Study Aziendale</h3>
+            <p>L'architettura Zero Trust non è più un concetto teorico ma una necessità pratica per le aziende moderne. Questo case study dettagliato documenta come abbiamo implementato una strategia Zero Trust completa per un cliente del settore finanziario.</p>
+            <div class="article-stats">
+              <span class="stat">🏢 2.500 endpoint gestiti</span>
+              <span class="stat">🔒 100% compliance raggiunta</span>
+            </div>
+            <div class="card-meta">
+              <span class="card-date">20 Agosto 2025</span>
+              <span class="card-read-time">15 min</span>
+            </div>
+            <a href="#zerotrust-article" class="card-link btn btn-outline">Leggi l'articolo completo</a>
+          </div>
+        </article>
+
+        <!-- Terzo Articolo -->
+        <article class="blog-card" data-category="threat-intel">
+          <div class="card-image">
+            <img src="images/oscar-nord-MuJHwDHbXUk-unsplash.jpg" alt="Threat Intelligence" />
+            <span class="card-category">Threat Intel</span>
+          </div>
+          <div class="card-content">
+            <h3>Analisi delle Minacce Q3 2025: Ransomware-as-a-Service in Crescita</h3>
+            <p>Il panorama delle minacce continua ad evolversi con nuovi gruppi ransomware che adottano modelli business-oriented. La nostra analisi trimestrale rivela trend preoccupanti e strategie di difesa efficaci.</p>
+            <div class="article-stats">
+              <span class="stat">📈 +340% attacchi RaaS</span>
+              <span class="stat">💰 $2.3M riscatto medio</span>
+            </div>
+            <div class="card-meta">
+              <span class="card-date">15 Agosto 2025</span>
+              <span class="card-read-time">8 min</span>
+            </div>
+            <a href="#threat-report" class="card-link btn btn-outline">Leggi il report</a>
+          </div>
+        </article>
+
+        <!-- Quarto Articolo -->
+        <article class="blog-card" data-category="compliance">
+          <div class="card-image">
+            <img src="images/thisguyshoots-ldyooOUG5WI-unsplash.jpg" alt="GDPR Compliance" />
+            <span class="card-category">Compliance</span>
+          </div>
+          <div class="card-content">
+            <h3>GDPR e Cybersecurity: Checklist Completa per la Conformità 2025</h3>
+            <p>Cinque anni dopo l'entrata in vigore del GDPR, molte aziende lottano ancora per la piena conformità. La nostra guida aggiornata include tutti gli aspetti di cybersecurity necessari per rispettare la normativa.</p>
+            <div class="article-stats">
+              <span class="stat">✅ 47 controlli essenziali</span>
+              <span class="stat">⚖️ Conformità garantita</span>
+            </div>
+            <div class="card-meta">
+              <span class="card-date">10 Agosto 2025</span>
+              <span class="card-read-time">20 min</span>
+            </div>
+            <a href="#gdpr-guide" class="card-link btn btn-outline">Scarica la checklist</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <!-- Newsletter Subscription -->

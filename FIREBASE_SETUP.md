@@ -20,6 +20,23 @@ Il file `js/firebase-config.js` contiene informazioni sensibili e **NON deve ess
    - `YOUR_APP_ID` → Il tuo App ID
    - `YOUR_MEASUREMENT_ID` → Il tuo Measurement ID
 
+   Local generation helper
+   -----------------------
+
+   If you keep Firebase values in a local `.env` for development, you can generate the frontend config file used by the app with the included Node script:
+
+   1. Install Node.js (>=14) if not already installed.
+   2. From the repo root run:
+
+      node scripts/generate-firebase-config.js
+
+   3. The script will create `js/firebase-config.local.js` (gitignored). Do not commit it.
+
+   Supported `.env` formats:
+   - Simple KEY=VALUE pairs, e.g. `FIREBASE_API_KEY=...`
+   - Or the Firebase JS snippet (the script will parse the values)
+
+
 3. **Il file sarà ignorato** da Git automaticamente grazie al `.gitignore`
 
 ## 🔧 Dove trovare i valori Firebase

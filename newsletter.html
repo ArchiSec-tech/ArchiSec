@@ -8,12 +8,18 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KFV46D4V');</script>
   <!-- End Google Tag Manager -->
-  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBHC6F9JTY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BBHC6F9JTY');
+  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Newsletter - ArchiSec Cybersecurity</title>
-  <meta name="description" content="Iscriviti alla newsletter di ArchiSec per ricevere aggiornamenti esclusivi sulla cybersecurity, guide pratiche e alert di sicurezza.">
+  <title>Newsletter - ArchiSec Cybersecurity Insights</title>
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -21,10 +27,6 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./vars.css">
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./css/auth.css">
-  
-  <!-- Scripts -->
-  <script src="js/main.js" defer></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -38,7 +40,7 @@
     <nav class="site-header">
       <div class="header-inner">
         <div class="site-brand">
-          <a href="index.html" class="brand-link">
+          <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
             <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
             <span class="brand-text">ArchiSec</span>
           </a>
@@ -57,227 +59,144 @@
           </div>
           <a href="support.html" class="nav-link">Support</a>
           <a href="blog.html" class="nav-link">Blog</a>
-          <span class="nav-link">Partners</span>
+          <a href="newsletter.html" class="nav-link active">Newsletter</a>
         </div>
         <div class="header-actions">
-          <a href="login.html" class="btn btn-outline" id="loginButton" style="margin-right: 10px; display: none;">Login</a>
-          <a href="dashboard.html" class="btn btn-outline" id="dashboardButton" style="margin-right: 10px; display: none;">Dashboard</a>
           <button class="btn btn-primary" id="signupButton" type="button">Sign Up</button>
         </div>
       </div>
     </nav>
 
     <!-- Newsletter Hero Section -->
-    <section class="hero-section newsletter-hero">
-      <div class="hero-background">
-        <div class="hero-overlay"></div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="hero-title-main">Newsletter</span>
-            <span class="hero-title-highlight">ArchiSec</span>
+    <section class="newsletter-hero-section">
+      <div class="container">
+        <div class="newsletter-hero-content">
+          <h1 class="newsletter-hero-title">
+            <span class="hero-title-main">Cybersecurity</span>
+            <span class="hero-title-highlight">Intelligence</span>
           </h1>
-          <p class="hero-description">
-            Resta sempre un passo avanti alle minacce digitali. Iscriviti per ricevere 
-            insights esclusivi, guide pratiche e aggiornamenti dal mondo della cybersecurity.
+          <p class="newsletter-hero-description">
+            Ricevi insights settimanali sui cyber-rischi emergenti, analisi delle minacce più attuali e best practices per proteggere la tua azienda. La sicurezza inizia dall'informazione.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter Registration Section -->
-    <section class="newsletter-main-section">
-      <div class="container">
-        <div class="newsletter-grid">
           
-          <!-- Registration Form -->
-          <div class="newsletter-form-section">
-            <div class="form-card">
-              <h2>Iscriviti Ora</h2>
-              <p class="form-description">
-                Unisciti a oltre <strong>5,000+ professionisti</strong> che si affidano alla nostra newsletter 
-                per rimanere aggiornati sulle ultime tendenze della cybersecurity.
-              </p>
-              
-              <form class="newsletter-registration-form" id="newsletterRegistrationForm">
-                <div class="form-group">
-                  <label for="fullName">Nome e Cognome</label>
-                  <input type="text" id="fullName" name="fullName" required>
-                </div>
-                
-                <div class="form-group">
-                  <label for="email">Email*</label>
-                  <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                  <label for="company">Azienda (opzionale)</label>
-                  <input type="text" id="company" name="company">
-                </div>
-                
-                <div class="form-group">
-                  <label for="role">Ruolo (opzionale)</label>
-                  <select id="role" name="role">
-                    <option value="">Seleziona il tuo ruolo</option>
-                    <option value="ciso">CISO / Security Manager</option>
-                    <option value="admin">System Administrator</option>
-                    <option value="dev">Developer</option>
-                    <option value="consultant">Consultant</option>
-                    <option value="student">Student</option>
-                    <option value="other">Altro</option>
-                  </select>
-                </div>
-                
-                <div class="form-group checkbox-group">
-                  <label class="checkbox-label">
-                    <input type="checkbox" id="weeklyUpdates" name="preferences" value="weekly" checked>
-                    <span class="checkmark"></span>
-                    Newsletter settimanale con trend e novità
-                  </label>
-                </div>
-                
-                <div class="form-group checkbox-group">
-                  <label class="checkbox-label">
-                    <input type="checkbox" id="securityAlerts" name="preferences" value="alerts">
-                    <span class="checkmark"></span>
-                    Alert immediati per vulnerabilità critiche
-                  </label>
-                </div>
-                
-                <div class="form-group checkbox-group">
-                  <label class="checkbox-label">
-                    <input type="checkbox" id="exclusiveContent" name="preferences" value="exclusive">
-                    <span class="checkmark"></span>
-                    Contenuti esclusivi e guide approfondite
-                  </label>
-                </div>
-                
-                <div class="form-group checkbox-group">
-                  <label class="checkbox-label">
-                    <input type="checkbox" id="privacy" name="privacy" required>
-                    <span class="checkmark"></span>
-                    Accetto la <a href="privacy.html" target="_blank">Privacy Policy</a> e i Termini di Servizio*
-                  </label>
-                </div>
-                
-                <button type="submit" class="btn btn-primary newsletter-submit">
-                  <span class="btn-text">Iscriviti Gratuitamente</span>
-                  <span class="btn-loading" style="display: none;">⏳ Registrazione...</span>
-                </button>
-              </form>
-              
-              <div class="success-message" id="successMessage" style="display: none;">
-                <div class="success-icon">✅</div>
-                <h3>Iscrizione Completata!</h3>
-                <p>Grazie per esserti iscritto. Riceverai presto la prima newsletter nella tua casella di posta.</p>
+          <form class="newsletter-signup-form" id="mainNewsletterForm">
+            <div class="newsletter-signup-group">
+              <input type="email" id="heroNewsletterEmail" placeholder="La tua email aziendale" required>
+              <button type="submit" class="newsletter-signup-btn">Iscriviti Ora</button>
+            </div>
+            <div class="newsletter-benefits">
+              <div class="benefit-item">
+                <span class="benefit-icon">📊</span>
+                <span>Report settimanali</span>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">🔒</span>
+                <span>Alert di sicurezza</span>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">🚀</span>
+                <span>Anticipi sui servizi</span>
               </div>
             </div>
+            <div class="newsletter-privacy">
+              <small>
+                <input type="checkbox" id="heroPrivacyConsent" required>
+                <label for="heroPrivacyConsent">
+                  Accetto la <a href="#" onclick="alert('Privacy policy in costruzione')">Privacy Policy</a> e di ricevere comunicazioni da ArchiSec
+                </label>
+              </small>
+            </div>
+          </form>
+          
+          <div id="heroNewsletterSuccess" class="newsletter-message success" style="display: none;">
+            ✅ Benvenuto nella community ArchiSec! Controlla la tua email per confermare l'iscrizione.
           </div>
-          
-          <!-- Benefits Section -->
-          <div class="newsletter-benefits-section">
-            <h3>Cosa Riceverai</h3>
-            
-            <div class="benefit-card">
-              <div class="benefit-icon">📈</div>
-              <div class="benefit-content">
-                <h4>Trend Analysis</h4>
-                <p>Analisi settimanale delle tendenze del mercato cybersecurity e delle nuove minacce emergenti.</p>
-              </div>
-            </div>
-            
-            <div class="benefit-card">
-              <div class="benefit-icon">🔍</div>
-              <div class="benefit-content">
-                <h4>Vulnerability Alerts</h4>
-                <p>Notifiche immediate su CVE critiche e patch di sicurezza per proteggere la tua infrastruttura.</p>
-              </div>
-            </div>
-            
-            <div class="benefit-card">
-              <div class="benefit-icon">📚</div>
-              <div class="benefit-content">
-                <h4>Guide Pratiche</h4>
-                <p>Tutorial step-by-step, best practices e case studies per implementare soluzioni di sicurezza efficaci.</p>
-              </div>
-            </div>
-            
-            <div class="benefit-card">
-              <div class="benefit-icon">🎯</div>
-              <div class="benefit-content">
-                <h4>Contenuti Esclusivi</h4>
-                <p>Accesso prioritario a whitepaper, webinar esclusivi e eventi riservati agli iscritti.</p>
-              </div>
-            </div>
-            
-            <div class="frequency-info">
-              <h4>📅 Frequenza di Invio</h4>
-              <ul>
-                <li><strong>Newsletter Principale:</strong> Ogni martedì mattina</li>
-                <li><strong>Security Alerts:</strong> In tempo reale (solo per minacce critiche)</li>
-                <li><strong>Contenuti Speciali:</strong> 1-2 volte al mese</li>
-              </ul>
-              <p class="frequency-note">
-                🔒 <strong>Zero Spam Policy:</strong> Puoi disiscriverti in qualsiasi momento con un click. 
-                I tuoi dati sono protetti secondo il GDPR.
-              </p>
-            </div>
+          <div id="heroNewsletterError" class="newsletter-message error" style="display: none;">
+            ❌ Errore durante l'iscrizione. Verifica la tua email e riprova.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Newsletter Preview Section -->
-    <section class="newsletter-preview">
+    <!-- Newsletter Content Section -->
+    <section class="newsletter-content-section">
       <div class="container">
-        <h2 class="section-title">Anteprima Newsletter</h2>
-        <p class="section-description">Ecco un esempio di quello che riceverai nella tua casella di posta</p>
-        
-        <div class="preview-card">
-          <div class="email-header">
-            <div class="email-from">
-              <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec" class="email-logo">
-              <div>
-                <strong>ArchiSec Team</strong>
-                <span>security@archisec.tech</span>
-              </div>
-            </div>
-            <div class="email-subject">
-              <strong>🛡️ ArchiSec Weekly - Nuove minacce AI e difese adaptive
-            </div>
-          </div>
+        <div class="newsletter-content-grid">
           
-          <div class="email-content">
-            <h3>🔥 In Evidenza Questa Settimana</h3>
-            <ul>
-              <li><strong>AI-Powered Attacks:</strong> Come i cybercriminali stanno usando ChatGPT per creare malware più sofisticati</li>
-              <li><strong>Zero-Day Alert:</strong> Vulnerabilità critica in Apache Struts - Patch disponibile</li>
-              <li><strong>Case Study:</strong> Come abbiamo fermato un attacco ransomware in 12 minuti</li>
+          <!-- What You'll Get -->
+          <div class="newsletter-info-card">
+            <h3>Cosa riceverai</h3>
+            <ul class="newsletter-features">
+              <li>
+                <span class="feature-icon">🎯</span>
+                <div>
+                  <strong>Threat Intelligence</strong>
+                  <p>Analisi delle minacce più recenti e consigli su come proteggersi</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">📈</span>
+                <div>
+                  <strong>Trend di Sicurezza</strong>
+                  <p>Statistiche e previsioni sui cyber-attacchi nel tuo settore</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🛡️</span>
+                <div>
+                  <strong>Best Practices</strong>
+                  <p>Guide pratiche per implementare misure di sicurezza efficaci</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">⚡</span>
+                <div>
+                  <strong>Alert Urgenti</strong>
+                  <p>Notifiche immediate su vulnerabilità critiche e patch di sicurezza</p>
+                </div>
+              </li>
             </ul>
-            
-            <h3>📋 Guida della Settimana</h3>
-            <p><strong>"Implementare MFA in 10 Minuti"</strong> - Tutorial pratico per proteggere gli account aziendali</p>
-            
-            <h3>📊 Statistiche del Settore</h3>
-            <p>Il 73% degli attacchi ransomware inizia con email di phishing. Ecco come riconoscerle...</p>
           </div>
+
+          <!-- Recent Articles Preview -->
+          <div class="newsletter-info-card">
+            <h3>Ultimi Insights</h3>
+            <div class="recent-articles">
+              <article class="article-preview">
+                <div class="article-date">29 Ago 2025</div>
+                <h4>Zero-Day in Microsoft Exchange: Come Proteggersi</h4>
+                <p>Analisi della vulnerabilità CVE-2025-0234 e misure di mitigazione immediate...</p>
+              </article>
+              <article class="article-preview">
+                <div class="article-date">22 Ago 2025</div>
+                <h4>Ransomware-as-a-Service: La Nuova Minaccia</h4>
+                <p>Come i criminali informatici stanno industrializzando gli attacchi ransomware...</p>
+              </article>
+              <article class="article-preview">
+                <div class="article-date">15 Ago 2025</div>
+                <h4>AI e Cybersecurity: Opportunità e Rischi</h4>
+                <p>L'intelligenza artificiale sta rivoluzionando la sicurezza informatica...</p>
+              </article>
+            </div>
+            <a href="blog.html" class="view-all-link">Vedi tutti gli articoli →</a>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-sections">
+      <div class="container">
+        <div class="footer-content">
           <div class="footer-section">
-            <h4>ArchiSec</h4>
-            <p>Protezione digitale completa per il tuo business.</p>
-            <div class="footer-social">
-              <a href="#" class="social-icon"><img src="social0.svg" alt="LinkedIn" /></a>
-              <a href="#" class="social-icon"><img src="social1.svg" alt="Twitter" /></a>
-              <a href="#" class="social-icon"><img src="social2.svg" alt="GitHub" /></a>
+            <div class="site-brand">
+              <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+              <span class="brand-text">ArchiSec</span>
             </div>
+            <p class="footer-description">
+              Protezione avanzata per il tuo business digitale. Soluzioni di cybersecurity professionali e personalizzate.
+            </p>
           </div>
           <div class="footer-section">
             <h4>Servizi</h4>
@@ -287,9 +206,10 @@
             <a href="implementazione-sicurezza.html">Implementazione</a>
           </div>
           <div class="footer-section">
-            <h4>Risorse</h4>
+            <h4>Azienda</h4>
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
             <a href="blog.html">Blog</a>
-            <a href="newsletter.html">Newsletter</a>
             <a href="support.html">Support</a>
           </div>
           <div class="footer-section">
@@ -301,9 +221,10 @@
         </div>
         <div class="footer-bottom">
           <div class="copyright">© 2025 ArchiSec. All Rights Reserved</div>
-          <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Termini di Servizio</a>
+          <div class="footer-social">
+            <a href="#" class="social-icon"><img src="social0.svg" alt="LinkedIn" /></a>
+            <a href="#" class="social-icon"><img src="social1.svg" alt="Twitter" /></a>
+            <a href="#" class="social-icon"><img src="social2.svg" alt="GitHub" /></a>
           </div>
         </div>
       </div>
@@ -311,81 +232,68 @@
 
   </div>
 
-  <script>
-    // Newsletter registration form handling
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('newsletterRegistrationForm');
-      const successMessage = document.getElementById('successMessage');
-      
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const submitBtn = form.querySelector('.newsletter-submit');
-          const btnText = submitBtn.querySelector('.btn-text');
-          const btnLoading = submitBtn.querySelector('.btn-loading');
-          
-          // Show loading state
-          btnText.style.display = 'none';
-          btnLoading.style.display = 'inline';
-          submitBtn.disabled = true;
-          
-          // Collect form data
-          const formData = new FormData(form);
-          const preferences = [];
-          form.querySelectorAll('input[name="preferences"]:checked').forEach(checkbox => {
-            preferences.push(checkbox.value);
-          });
-          
-          const newsletterData = {
-            fullName: formData.get('fullName'),
-            email: formData.get('email'),
-            company: formData.get('company'),
-            role: formData.get('role'),
-            preferences: preferences,
-            timestamp: new Date().toISOString()
-          };
-          
-          // Simulate API call
-          setTimeout(() => {
-            try {
-              // Store in localStorage for demo purposes
-              const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-              existingSubscriptions.push(newsletterData);
-              localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
-              
-              // Show success message
-              form.style.display = 'none';
-              successMessage.style.display = 'block';
-              
-              // Analytics tracking
-              if (typeof gtag !== 'undefined') {
-                gtag('event', 'newsletter_signup', {
-                  'event_category': 'engagement',
-                  'event_label': 'newsletter_page'
-                });
-              }
-              
-            } catch (error) {
-              console.error('Error saving newsletter subscription:', error);
-              alert('Si è verificato un errore. Riprova più tardi.');
-            }
-            
-            // Reset button state
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-          }, 2000);
-        });
-      }
-    });
-  </script>
-
-  <!-- Firebase config -->
+  <!-- Firebase Scripts (v8 compat) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  
+  <!-- Firebase Config Loader -->
   <script src="js/firebase-config.js"></script>
-
+  
+  <script>
+    // Newsletter form handling
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header signup button
+      document.getElementById('signupButton').addEventListener('click', function() {
+        window.location.href = 'signup.html';
+      });
+      
+      // Main newsletter form
+      document.getElementById('mainNewsletterForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('heroNewsletterEmail').value;
+        const consent = document.getElementById('heroPrivacyConsent').checked;
+        const successMsg = document.getElementById('heroNewsletterSuccess');
+        const errorMsg = document.getElementById('heroNewsletterError');
+        
+        if (!consent) {
+          errorMsg.textContent = 'Devi accettare la privacy policy per iscriverti.';
+          errorMsg.style.display = 'block';
+          successMsg.style.display = 'none';
+          return;
+        }
+        
+        try {
+          // Wait for Firebase to be ready
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
+          const dbInstance = window.db;
+          if (dbInstance) {
+            // Save newsletter subscription to Firestore
+            await dbInstance.collection('newsletter_subscriptions').add({
+              email: email,
+              subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
+              status: 'active',
+              source: 'newsletter_page'
+            });
+          }
+          
+          successMsg.style.display = 'block';
+          errorMsg.style.display = 'none';
+          
+          // Reset form
+          document.getElementById('heroNewsletterEmail').value = '';
+          document.getElementById('heroPrivacyConsent').checked = false;
+          
+        } catch (error) {
+          console.error('Newsletter subscription error:', error);
+          errorMsg.textContent = 'Errore durante l\'iscrizione. Riprova più tardi.';
+          errorMsg.style.display = 'block';
+          successMsg.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

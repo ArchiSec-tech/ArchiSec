@@ -1,559 +1,352 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KFV46D4V');</script>
-  <!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBHC6F9JTY"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BBHC6F9JTY');
-  </script>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - ArchiSec</title>
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="./vars.css">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./css/auth.css">
-  
-  <style>
-    .dashboard {
-      min-height: 100vh;
-      background: var(--background-dark);
-      padding-top: 80px;
-    }
-    
-    .dashboard-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    
-    .dashboard-header {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .welcome-message {
-      color: var(--text-primary);
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-    
-    .user-info {
-      color: var(--text-secondary);
-      font-size: 16px;
-    }
-    
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    
-    .dashboard-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .dashboard-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .card-title {
-      color: var(--text-primary);
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .card-content {
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    
-    .profile-form {
-      display: grid;
-      gap: 20px;
-    }
-    
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    
-    @media (max-width: 768px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .form-group label {
-      color: var(--text-primary);
-      font-weight: 500;
-      margin-bottom: 8px;
-      display: block;
-    }
-    
-    .form-group input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-primary);
-      font-size: 16px;
-    }
-    
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
-    }
-    
-    .btn-group {
-      display: flex;
-      gap: 15px;
-      justify-content: flex-end;
-    }
-    
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text-primary);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-    
-    .logout-btn {
-      background: #dc3545;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.3s ease;
-    }
-    
-    .logout-btn:hover {
-      background: #c82333;
-    }
-    
-    .loading {
-      text-align: center;
-      color: var(--text-secondary);
-      padding: 40px;
-    }
-  </style>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KFV46D4V');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBHC6F9JTY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BBHC6F9JTY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ArchiSec</title>
+    <link rel="stylesheet" href="./vars.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/auth.css">
+    <style>
+        .dashboard-page {
+            min-height: 100vh;
+            background: #f8f9fa;
+            padding: 20px 0;
+        }
+        
+        .dashboard-header {
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .dashboard-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .dashboard-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .dashboard-logo span {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .dashboard-user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-welcome {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #c82333;
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        .dashboard-card h3 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .profile-form {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        .quick-actions {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .action-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .action-btn:hover {
+            background: #0056b3;
+        }
+        
+        .action-btn.secondary {
+            background: #6c757d;
+        }
+        
+        .action-btn.secondary:hover {
+            background: #545b62;
+        }
+    </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFV46D4V"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-  <!-- Navigation Header -->
-  <nav class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
-    <div class="header-inner">
-      <div class="site-brand">
-        <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
-        <span class="brand-text">ArchiSec</span>
-      </div>
-      <div class="site-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="support.html" class="nav-link">Support</a>
-        <a href="#consultations" class="nav-link">Richiedi Consulenza</a>
-      </div>
-      <div class="header-actions">
-        <button class="logout-btn" id="logoutButton">Logout</button>
-      </div>
-    </div>
-  </nav>
-
-  <div class="dashboard">
-    <div class="dashboard-container">
-      <div id="loadingMessage" class="loading">
-        Caricamento dashboard...
-      </div>
-      
-      <div id="dashboardContent" style="display: none;">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFV46D4V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="dashboard-page">
         <div class="dashboard-header">
-          <h1 class="welcome-message">Bentornato, <span id="userName">Utente</span>!</h1>
-          <p class="user-info">Gestisci il tuo profilo e le tue richieste di consulenza</p>
+            <div class="dashboard-nav">
+                <a href="index.html" class="dashboard-logo">
+                    <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" />
+                    <span>ArchiSec</span>
+                </a>
+                <div class="dashboard-user">
+                    <div class="user-welcome">Benvenuto, <span id="userName">...</span></div>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
         </div>
         
-        <div class="dashboard-grid">
-          <!-- Profilo Utente -->
-          <div class="dashboard-card">
-            <h2 class="card-title">
-              👤 Il Mio Profilo
-            </h2>
-            <div class="card-content">
-              <form id="profileForm" class="profile-form">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="profileName">Nome Completo</label>
-                    <input type="text" id="profileName" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="profileEmail">Email</label>
-                    <input type="email" id="profileEmail" disabled>
-                  </div>
+        <div class="dashboard-container">
+            <div class="dashboard-grid">
+                <!-- Profilo Utente -->
+                <div class="dashboard-card">
+                    <h3>Il Tuo Profilo</h3>
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profileName">Nome Completo</label>
+                                <input type="text" id="profileName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email</label>
+                                <input type="email" id="profileEmail" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profileCompany">Azienda</label>
+                                <input type="text" id="profileCompany">
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePhone">Telefono</label>
+                                <input type="tel" id="profilePhone">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn">Aggiorna Profilo</button>
+                    </form>
+                    
+                    <div id="profileError" class="error-message" style="display: none; margin-top: 15px;"></div>
+                    <div id="profileSuccess" class="success-message" style="display: none; margin-top: 15px;"></div>
                 </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="profileCompany">Azienda</label>
-                    <input type="text" id="profileCompany">
-                  </div>
-                  <div class="form-group">
-                    <label for="profilePhone">Telefono</label>
-                    <input type="tel" id="profilePhone">
-                  </div>
+                
+                <!-- Azioni Rapide -->
+                <div class="dashboard-card">
+                    <h3>Azioni Rapide</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" onclick="window.location.href='consulenza.html'">
+                            🔍 Richiedi Consulenza Gratuita
+                        </button>
+                        <button class="action-btn" onclick="window.location.href='security-assessment.html'">
+                            🛡️ Security Assessment
+                        </button>
+                        <button class="action-btn secondary" onclick="window.location.href='pricing.html'">
+                            💰 Vedi Prezzi e Servizi
+                        </button>
+                        <button class="action-btn secondary" onclick="window.location.href='support.html'">
+                            📞 Contatta il Supporto
+                        </button>
+                    </div>
                 </div>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-secondary" id="cancelProfileBtn">Annulla</button>
-                  <button type="submit" class="btn btn-primary">Salva Modifiche</button>
-                </div>
-              </form>
             </div>
-          </div>
-          
-          <!-- Richiedi Consulenza -->
-          <div class="dashboard-card" id="consultations">
-            <h2 class="card-title">
-              📞 Richiedi Consulenza
-            </h2>
-            <div class="card-content">
-              <form id="consultationForm" class="profile-form">
-                <div class="form-group">
-                  <label for="consultationType">Tipo di Servizio</label>
-                  <select id="consultationType" style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-size: 16px;">
-                    <option value="security-assessment">Security Assessment</option>
-                    <option value="vulnerability-fixing">Vulnerability Fixing</option>
-                    <option value="monitoring">Monitoraggio 24/7</option>
-                    <option value="implementation">Implementazione Sicurezza</option>
-                    <option value="other">Altro</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="consultationMessage">Descrizione della Richiesta</label>
-                  <textarea id="consultationMessage" rows="4" style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-size: 16px; resize: vertical;" required placeholder="Descrivi le tue necessità di sicurezza..."></textarea>
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="consultationUrgency">Urgenza</label>
-                    <select id="consultationUrgency" style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-size: 16px;">
-                      <option value="low">Bassa</option>
-                      <option value="medium">Media</option>
-                      <option value="high">Alta</option>
-                      <option value="critical">Critica</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="consultationBudget">Budget Stimato</label>
-                    <select id="consultationBudget" style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; background: rgba(255, 255, 255, 0.05); color: var(--text-primary); font-size: 16px;">
-                      <option value="">Preferisco non specificare</option>
-                      <option value="1000-5000">€1.000 - €5.000</option>
-                      <option value="5000-15000">€5.000 - €15.000</option>
-                      <option value="15000-50000">€15.000 - €50.000</option>
-                      <option value="50000+">€50.000+</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="btn-group">
-                  <button type="submit" class="btn btn-primary">Invia Richiesta</button>
-                </div>
-              </form>
-            </div>
-          </div>
         </div>
-        
-        <!-- Le Tue Richieste -->
-        <div class="dashboard-card">
-          <h2 class="card-title">
-            📋 Le Tue Richieste di Consulenza
-          </h2>
-          <div class="card-content">
-            <div id="consultationsList">
-              <p style="color: var(--text-secondary); text-align: center; padding: 20px;">Caricamento richieste...</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Success/Error Messages -->
-  <div id="successMessage" class="success-message" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 2000; background: #28a745; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"></div>
-  <div id="errorMessage" class="error-message" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 2000; background: #dc3545; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"></div>
-
-  <!-- Firebase Scripts (v8 compat) -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-  
-  <!-- Firebase Config Loader -->
-  <script src="js/firebase-config.js"></script>
-  
-  <script>
-    let currentUser = null;
-    let originalProfileData = {};
+    <!-- Firebase Scripts (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     
-    document.addEventListener('DOMContentLoaded', function() {
-      // Wait for Firebase to initialize
-      setTimeout(checkAuth, 1000);
-    });
-    
-    function checkAuth() {
-      if (!window.auth) {
-        setTimeout(checkAuth, 500);
-        return;
-      }
-      
-      window.auth.onAuthStateChanged(async (user) => {
-        if (user) {
-          currentUser = user;
-          await loadDashboard();
-        } else {
-          // Redirect to login
-          window.location.href = 'login.html';
-        }
-      });
-    }
-    
-    async function loadDashboard() {
-      try {
-        // Load user profile
-        const userDoc = await window.db.collection('users').doc(currentUser.uid).get();
-        const userData = userDoc.data();
-        
-        if (userData) {
-          document.getElementById('userName').textContent = userData.name || 'Utente';
-          document.getElementById('profileName').value = userData.name || '';
-          document.getElementById('profileEmail').value = userData.email || '';
-          document.getElementById('profileCompany').value = userData.company || '';
-          document.getElementById('profilePhone').value = userData.phone || '';
-          
-          // Store original data for cancel functionality
-          originalProfileData = {
-            name: userData.name || '',
-            company: userData.company || '',
-            phone: userData.phone || ''
-          };
-        }
-        
-        // Load user consultations
-        await loadConsultations();
-        
-        // Show dashboard content
-        document.getElementById('loadingMessage').style.display = 'none';
-        document.getElementById('dashboardContent').style.display = 'block';
-        
-        // Setup event listeners
-        setupEventListeners();
-        
-      } catch (error) {
-        console.error('Error loading dashboard:', error);
-        showError('Errore durante il caricamento della dashboard');
-      }
-    }
-    
-    async function loadConsultations() {
-      try {
-        const consultationsSnapshot = await window.db
-          .collection('consultations')
-          .where('userId', '==', currentUser.uid)
-          .orderBy('createdAt', 'desc')
-          .get();
-        
-        const consultationsList = document.getElementById('consultationsList');
-        
-        if (consultationsSnapshot.empty) {
-          consultationsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">Nessuna richiesta di consulenza trovata.</p>';
-          return;
-        }
-        
-        let html = '';
-        consultationsSnapshot.forEach(doc => {
-          const data = doc.data();
-          const date = data.createdAt ? data.createdAt.toDate().toLocaleDateString('it-IT') : 'Data non disponibile';
-          const urgencyColors = {
-            low: '#28a745',
-            medium: '#ffc107',
-            high: '#fd7e14',
-            critical: '#dc3545'
-          };
-          
-          html += `
-            <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; margin-bottom: 15px; background: rgba(255,255,255,0.02);">
-              <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 10px;">
-                <h4 style="color: var(--text-primary); margin: 0; flex: 1;">${getServiceName(data.type)}</h4>
-                <span style="background: ${urgencyColors[data.urgency] || '#6c757d'}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 500;">${getUrgencyName(data.urgency)}</span>
-              </div>
-              <p style="color: var(--text-secondary); margin: 5px 0;">${data.message}</p>
-              <div style="color: var(--text-muted); font-size: 14px; margin-top: 10px;">
-                <span>📅 ${date}</span>
-                ${data.budget ? ` • 💰 ${data.budget}` : ''}
-              </div>
-            </div>
-          `;
+    <!-- Firebase Config Loader -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileForm = document.getElementById('profileForm');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const userName = document.getElementById('userName');
+            const profileError = document.getElementById('profileError');
+            const profileSuccess = document.getElementById('profileSuccess');
+            
+            // Wait for Firebase to be ready
+            setTimeout(initDashboard, 1000);
+            
+            function initDashboard() {
+                const authInstance = window.auth;
+                const dbInstance = window.db;
+                
+                if (!authInstance || !dbInstance) {
+                    alert('Errore: Firebase non inizializzato. Reindirizzamento al login...');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Check if user is authenticated
+                authInstance.onAuthStateChanged(async function(user) {
+                    if (user) {
+                        // User is signed in
+                        userName.textContent = user.displayName || user.email.split('@')[0];
+                        
+                        // Load user profile from Firestore
+                        try {
+                            const userDoc = await dbInstance.collection('users').doc(user.uid).get();
+                            if (userDoc.exists) {
+                                const userData = userDoc.data();
+                                document.getElementById('profileName').value = userData.name || '';
+                                document.getElementById('profileEmail').value = userData.email || user.email;
+                                document.getElementById('profileCompany').value = userData.company || '';
+                                document.getElementById('profilePhone').value = userData.phone || '';
+                            } else {
+                                // Fill with basic data from auth
+                                document.getElementById('profileEmail').value = user.email;
+                            }
+                        } catch (error) {
+                            console.error('Errore caricamento profilo:', error);
+                        }
+                    } else {
+                        // No user is signed in
+                        window.location.href = 'login.html';
+                    }
+                });
+                
+                // Handle profile form submission
+                profileForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const user = authInstance.currentUser;
+                    if (!user) {
+                        window.location.href = 'login.html';
+                        return;
+                    }
+                    
+                    try {
+                        profileError.style.display = 'none';
+                        profileSuccess.style.display = 'none';
+                        
+                        const profileData = {
+                            name: document.getElementById('profileName').value,
+                            email: document.getElementById('profileEmail').value,
+                            company: document.getElementById('profileCompany').value,
+                            phone: document.getElementById('profilePhone').value,
+                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        };
+                        
+                        await dbInstance.collection('users').doc(user.uid).update(profileData);
+                        
+                        profileSuccess.textContent = 'Profilo aggiornato con successo!';
+                        profileSuccess.style.display = 'block';
+                        
+                        // Update display name if changed
+                        if (profileData.name) {
+                            userName.textContent = profileData.name.split(' ')[0];
+                        }
+                        
+                    } catch (error) {
+                        console.error('Errore aggiornamento profilo:', error);
+                        profileError.textContent = 'Errore durante l\'aggiornamento del profilo.';
+                        profileError.style.display = 'block';
+                    }
+                });
+                
+                // Handle logout
+                logoutBtn.addEventListener('click', async function() {
+                    try {
+                        await authInstance.signOut();
+                        window.location.href = 'index.html';
+                    } catch (error) {
+                        console.error('Errore logout:', error);
+                    }
+                });
+            }
         });
-        
-        consultationsList.innerHTML = html;
-        
-      } catch (error) {
-        console.error('Error loading consultations:', error);
-        document.getElementById('consultationsList').innerHTML = '<p style="color: #dc3545;">Errore nel caricamento delle richieste.</p>';
-      }
-    }
-    
-    function setupEventListeners() {
-      // Profile form
-      document.getElementById('profileForm').addEventListener('submit', handleProfileUpdate);
-      document.getElementById('cancelProfileBtn').addEventListener('click', cancelProfileChanges);
-      
-      // Consultation form
-      document.getElementById('consultationForm').addEventListener('submit', handleConsultationSubmit);
-      
-      // Logout button
-      document.getElementById('logoutButton').addEventListener('click', handleLogout);
-    }
-    
-    async function handleProfileUpdate(e) {
-      e.preventDefault();
-      
-      try {
-        const updateData = {
-          name: document.getElementById('profileName').value,
-          company: document.getElementById('profileCompany').value,
-          phone: document.getElementById('profilePhone').value
-        };
-        
-        await window.db.collection('users').doc(currentUser.uid).update(updateData);
-        
-        // Update original data
-        originalProfileData = { ...updateData };
-        
-        showSuccess('Profilo aggiornato con successo!');
-        
-      } catch (error) {
-        console.error('Error updating profile:', error);
-        showError('Errore nell\'aggiornamento del profilo');
-      }
-    }
-    
-    function cancelProfileChanges() {
-      document.getElementById('profileName').value = originalProfileData.name;
-      document.getElementById('profileCompany').value = originalProfileData.company;
-      document.getElementById('profilePhone').value = originalProfileData.phone;
-    }
-    
-    async function handleConsultationSubmit(e) {
-      e.preventDefault();
-      
-      try {
-        const consultationData = {
-          userId: currentUser.uid,
-          userEmail: currentUser.email,
-          type: document.getElementById('consultationType').value,
-          message: document.getElementById('consultationMessage').value,
-          urgency: document.getElementById('consultationUrgency').value,
-          budget: document.getElementById('consultationBudget').value,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          status: 'pending'
-        };
-        
-        await window.db.collection('consultations').add(consultationData);
-        
-        // Reset form
-        document.getElementById('consultationForm').reset();
-        
-        // Reload consultations
-        await loadConsultations();
-        
-        showSuccess('Richiesta di consulenza inviata con successo!');
-        
-      } catch (error) {
-        console.error('Error submitting consultation:', error);
-        showError('Errore nell\'invio della richiesta');
-      }
-    }
-    
-    async function handleLogout() {
-      try {
-        await window.auth.signOut();
-        window.location.href = 'index.html';
-      } catch (error) {
-        console.error('Error signing out:', error);
-        showError('Errore durante il logout');
-      }
-    }
-    
-    function showSuccess(message) {
-      const successDiv = document.getElementById('successMessage');
-      successDiv.textContent = message;
-      successDiv.style.display = 'block';
-      setTimeout(() => {
-        successDiv.style.display = 'none';
-      }, 4000);
-    }
-    
-    function showError(message) {
-      const errorDiv = document.getElementById('errorMessage');
-      errorDiv.textContent = message;
-      errorDiv.style.display = 'block';
-      setTimeout(() => {
-        errorDiv.style.display = 'none';
-      }, 4000);
-    }
-    
-    function getServiceName(type) {
-      const names = {
-        'security-assessment': 'Security Assessment',
-        'vulnerability-fixing': 'Vulnerability Fixing',
-        'monitoring': 'Monitoraggio 24/7',
-        'implementation': 'Implementazione Sicurezza',
-        'other': 'Altro'
-      };
-      return names[type] || type;
-    }
-    
-    function getUrgencyName(urgency) {
-      const names = {
-        'low': 'Bassa',
-        'medium': 'Media',
-        'high': 'Alta',
-        'critical': 'Critica'
-      };
-      return names[urgency] || urgency;
-    }
-  </script>
+    </script>
 </body>
 </html>

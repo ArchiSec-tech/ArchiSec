@@ -30,72 +30,6 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./css/auth.css">
   
-  <!-- Scroll Performance Optimization -->
-  <style>
-    * {
-      /* Enable hardware acceleration for smooth scrolling */
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-    }
-    
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-    
-    body {
-      /* Optimize rendering */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      
-      /* Prevent scroll jank */
-      overscroll-behavior: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Improve animation performance */
-    .service-card, .stat-card, .hero-content {
-      will-change: transform;
-      backface-visibility: hidden;
-      transform: translateY(30px);
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Smooth transitions for interactive elements */
-    .nav-link, .btn, .service-card, .brand-logo {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Animation keyframes */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    /* Optimize images for better performance */
-    img {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
-    
-    /* Reduce layout thrashing during scroll */
-    .site-header {
-      contain: layout style paint;
-    }
-  </style>
-  
   <!-- Scripts -->
   <script src="js/main.js" defer></script>
 </head>
@@ -110,10 +44,8 @@
     <nav class="site-header">
       <div class="header-inner">
         <div class="site-brand">
-          <a href="index.html" class="brand-link">
-            <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
-            <span class="brand-text">ArchiSec</span>
-          </a>
+          <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
+          <span class="brand-text">ArchiSec</span>
         </div>
         <div class="site-nav">
           <a href="pricing.html" class="nav-link">Pricing</a>
@@ -129,12 +61,9 @@
           </div>
           <a href="support.html" class="nav-link">Support</a>
           <a href="blog.html" class="nav-link">Blog</a>
-          <a href="newsletter.html" class="nav-link">Newsletter</a>
           <span class="nav-link">Partners</span>
         </div>
         <div class="header-actions">
-          <a href="login.html" class="btn btn-outline" id="loginButton" style="margin-right: 10px; display: none;">Login</a>
-          <a href="dashboard.html" class="btn btn-outline" id="dashboardButton" style="margin-right: 10px; display: none;">Dashboard</a>
           <button class="btn btn-primary" id="signupButton" type="button">Sign Up</button>
         </div>
       </div>
@@ -244,51 +173,35 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter-section" id="newsletter">
+    <section class="newsletter-section">
       <div class="container">
-        <div class="newsletter-content">
-          <div class="newsletter-header">
-            <h2 class="section-title">Rimani Sempre Aggiornato</h2>
-            <p class="section-description">
-              Iscriviti alla nostra newsletter per ricevere le ultime novità sulla cybersecurity, 
-              guide esclusive e aggiornamenti sui nostri servizi.
+        <div class="newsletter-container">
+          <div class="newsletter-content">
+            <h2 class="newsletter-title">Resta aggiornato sui cyber-rischi</h2>
+            <p class="newsletter-description">
+              Ricevi insights settimanali su minacce emergenti, best practices di sicurezza e aggiornamenti sui nostri servizi.
             </p>
           </div>
           <form class="newsletter-form" id="newsletterForm">
-            <div class="form-group">
-              <div class="input-group">
-                <input 
-                  type="email" 
-                  id="newsletterEmail"
-                  placeholder="Inserisci la tua email" 
-                  class="newsletter-input"
-                  required 
-                />
-                <button type="submit" class="btn btn-primary newsletter-btn">
-                  <span class="btn-text">Iscriviti</span>
-                  <span class="btn-loading" style="display: none;">⏳</span>
-                </button>
-              </div>
+            <div class="newsletter-input-group">
+              <input type="email" id="newsletterEmail" placeholder="La tua email" required>
+              <button type="submit" class="newsletter-btn">Iscriviti</button>
             </div>
-            <div class="newsletter-benefits">
-              <div class="benefit-item">
-                <span class="benefit-icon">📧</span>
-                <span>Newsletter settimanale</span>
-              </div>
-              <div class="benefit-item">
-                <span class="benefit-icon">🛡️</span>
-                <span>Alert di sicurezza</span>
-              </div>
-              <div class="benefit-item">
-                <span class="benefit-icon">📋</span>
-                <span>Guide esclusive</span>
-              </div>
+            <div class="newsletter-privacy">
+              <small>
+                <input type="checkbox" id="privacyConsent" required>
+                <label for="privacyConsent">
+                  Accetto la <a href="#" onclick="alert('Privacy policy in costruzione')">Privacy Policy</a> e i termini di servizio
+                </label>
+              </small>
             </div>
-            <p class="privacy-note">
-              🔒 Rispettiamo la tua privacy. Nessuno spam, solo contenuti di qualità. 
-              <a href="privacy.html">Leggi la Privacy Policy</a>
-            </p>
           </form>
+          <div id="newsletterSuccess" class="newsletter-message success" style="display: none;">
+            ✅ Iscrizione completata! Controlla la tua email per la conferma.
+          </div>
+          <div id="newsletterError" class="newsletter-message error" style="display: none;">
+            ❌ Errore durante l'iscrizione. Riprova più tardi.
+          </div>
         </div>
       </div>
     </section>
@@ -318,7 +231,6 @@
             <a href="index.html">Home</a>
             <a href="pricing.html">Pricing</a>
             <a href="blog.html">Blog</a>
-            <a href="newsletter.html">Newsletter</a>
             <a href="support.html">Support</a>
           </div>
           <div class="footer-section">
@@ -341,67 +253,102 @@
 
   </div>
 
-  <!-- Animations Script -->
+  <!-- Performance and Smooth Scrolling Script -->
   <script>
-    // Optimized Intersection Observer for animations
+    // Intersection Observer per le animazioni (improved)
     const observerOptions = {
-      threshold: [0, 0.1, 0.25],
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.2,
+      rootMargin: '0px 0px -30px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio > 0.1) {
-          // Use requestAnimationFrame for smooth animations
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Use requestAnimationFrame for smoother animations
           requestAnimationFrame(() => {
-            const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 150;
-            entry.target.style.animationDelay = `${delay}ms`;
-            entry.target.style.transform = 'translateY(0)';
             entry.target.style.opacity = '1';
-            entry.target.classList.add('animate-fade-in-up');
+            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
           });
-          observer.unobserve(entry.target);
+          observer.unobserve(entry.target); // Stop observing after animation
         }
       });
     }, observerOptions);
 
-    // Optimized header scroll effect with throttling
-    let ticking = false;
-    let lastScrollY = 0;
+    // Observe service cards with initial hidden state
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.service-card').forEach((card, index) => {
+        // Set initial state
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        observer.observe(card);
+      }
+    });
     
+    // Newsletter form handling
+    document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('newsletterEmail').value;
+      const consent = document.getElementById('privacyConsent').checked;
+      const successMsg = document.getElementById('newsletterSuccess');
+      const errorMsg = document.getElementById('newsletterError');
+      
+      if (!consent) {
+        errorMsg.textContent = 'Devi accettare la privacy policy per iscriverti.';
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+        return;
+      }
+      
+      try {
+        // Wait for Firebase to be ready
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        const dbInstance = window.db;
+        if (dbInstance) {
+          // Save newsletter subscription to Firestore
+          await dbInstance.collection('newsletter_subscriptions').add({
+            email: email,
+            subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            status: 'active',
+            source: 'homepage'
+          });
+        }
+        
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+        
+        // Reset form
+        document.getElementById('newsletterEmail').value = '';
+        document.getElementById('privacyConsent').checked = false;
+        
+      } catch (error) {
+        console.error('Newsletter subscription error:', error);
+        errorMsg.textContent = 'Errore durante l\'iscrizione. Riprova più tardi.';
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+      }
+    });
+  });    // Improved header scroll effect with throttling
+    let ticking = false;
     function updateHeader() {
       const header = document.querySelector('.site-header');
-      const currentScrollY = window.scrollY;
-      
-      if (Math.abs(currentScrollY - lastScrollY) > 5) {
-        // Use transform instead of changing background for better performance
-        if (currentScrollY > 100) {
+      if (header) {
+        if (window.scrollY > 100) {
           header.style.background = 'rgba(10, 10, 10, 0.98)';
-          header.style.backdropFilter = 'blur(10px)';
         } else {
           header.style.background = 'rgba(10, 10, 10, 0.95)';
-          header.style.backdropFilter = 'blur(5px)';
         }
-        lastScrollY = currentScrollY;
       }
       ticking = false;
     }
 
-    function requestTick() {
+    window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(updateHeader);
         ticking = true;
       }
-    }
-
-    // Throttled scroll listener
-    window.addEventListener('scroll', requestTick, { passive: true });
-
-    // Observe all service cards when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.service-card, .stat-card').forEach(card => {
-        observer.observe(card);
-      });
     });
 
     // Debug logging
@@ -409,113 +356,13 @@
       console.log('🚀 ArchiSec - New Design Loaded');
       
       const signupBtn = document.getElementById('signupButton');
-      const loginBtn = document.getElementById('loginButton');
-      const dashboardBtn = document.getElementById('dashboardButton');
-      
       console.log('🔘 Pulsante SIGN UP trovato:', !!signupBtn);
       
-      // Check auth state and update header
-      setTimeout(() => {
-        if (window.auth) {
-          window.auth.onAuthStateChanged((user) => {
-            if (user) {
-              // User is signed in
-              signupBtn.style.display = 'none';
-              loginBtn.style.display = 'none';
-              dashboardBtn.style.display = 'inline-block';
-            } else {
-              // User is signed out
-              signupBtn.style.display = 'inline-block';
-              loginBtn.style.display = 'inline-block';
-              dashboardBtn.style.display = 'none';
-            }
-          });
-        }
-      }, 1000);
-      
+      // Messaggio per auth disabilitata in produzione
       if (signupBtn) {
         signupBtn.addEventListener('click', function() {
           // Apri la pagina di registrazione
           window.location.href = 'signup.html';
-        });
-      }
-      
-      // Add smooth scrolling to all anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-      
-      // Newsletter form handling
-      const newsletterForm = document.getElementById('newsletterForm');
-      if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const email = document.getElementById('newsletterEmail').value;
-          const submitBtn = this.querySelector('.newsletter-btn');
-          const btnText = submitBtn.querySelector('.btn-text');
-          const btnLoading = submitBtn.querySelector('.btn-loading');
-          
-          // Show loading state
-          btnText.style.display = 'none';
-          btnLoading.style.display = 'inline';
-          submitBtn.disabled = true;
-          
-          // Simulate API call
-          setTimeout(() => {
-            try {
-              // Store subscription in localStorage for demo
-              const subscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-              subscriptions.push({
-                email: email,
-                timestamp: new Date().toISOString(),
-                source: 'homepage'
-              });
-              localStorage.setItem('newsletter_subscriptions', JSON.stringify(subscriptions));
-              
-              // Show success message
-              btnText.textContent = 'Iscritto! ✅';
-              btnText.style.display = 'inline';
-              btnLoading.style.display = 'none';
-              
-              // Reset form
-              document.getElementById('newsletterEmail').value = '';
-              
-              // Analytics tracking
-              if (typeof gtag !== 'undefined') {
-                gtag('event', 'newsletter_signup', {
-                  'event_category': 'engagement',
-                  'event_label': 'homepage'
-                });
-              }
-              
-              // Reset button after delay
-              setTimeout(() => {
-                btnText.textContent = 'Iscriviti';
-                submitBtn.disabled = false;
-              }, 3000);
-              
-            } catch (error) {
-              console.error('Error saving newsletter subscription:', error);
-              btnText.textContent = 'Errore ⚠️';
-              btnText.style.display = 'inline';
-              btnLoading.style.display = 'none';
-              
-              setTimeout(() => {
-                btnText.textContent = 'Iscriviti';
-                submitBtn.disabled = false;
-              }, 3000);
-            }
-          }, 1500);
         });
       }
     });

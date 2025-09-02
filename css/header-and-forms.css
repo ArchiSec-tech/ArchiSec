@@ -1,0 +1,139 @@
+/* Header and form label improvements to increase contrast and integrate with site fonts */
+
+/* ULTIMATE BROWSER OVERRIDE for link underlines */
+body a.site-brand:-webkit-any-link,
+body a.site-brand:link,
+body a.site-brand:any-link,
+html a.site-brand:-webkit-any-link,
+html a.site-brand:link,
+html a.site-brand:any-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  text-decoration-line: none !important;
+}
+
+/* GLOBAL BRAND LINK FIX - Remove ALL underlines */
+a.site-brand,
+.site-brand,
+.site-header a.site-brand,
+.site-header .site-brand,
+nav a.site-brand,
+header a.site-brand {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: 0 !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
+}
+
+a.site-brand:hover,
+.site-brand:hover,
+.site-header a.site-brand:hover,
+.site-header .site-brand:hover,
+nav a.site-brand:hover,
+header a.site-brand:hover,
+a.site-brand:focus,
+.site-brand:focus,
+.site-header a.site-brand:focus,
+.site-header .site-brand:focus,
+nav a.site-brand:focus,
+header a.site-brand:focus,
+a.site-brand:visited,
+.site-brand:visited,
+.site-header a.site-brand:visited,
+.site-header .site-brand:visited,
+nav a.site-brand:visited,
+header a.site-brand:visited,
+a.site-brand:active,
+.site-brand:active,
+.site-header a.site-brand:active,
+.site-header .site-brand:active,
+nav a.site-brand:active,
+header a.site-brand:active {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-underline-offset: 0 !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
+}
+
+:root{
+  --brand-color: #0b2b4a; /* deep navy */
+  --label-color: #0f1724; /* near-black for labels */
+  --label-weight: 600;
+  --brand-font: 'Montserrat', sans-serif;
+}
+
+/* Brand styling */
+.site-header .site-brand{
+  font-family: var(--brand-font);
+  font-weight: 800;
+  color: var(--brand-color);
+  font-size: 1.25rem;
+  letter-spacing: 0.4px;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.site-header .site-brand:hover {
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+.site-header .site-brand:focus {
+  text-decoration: none !important;
+  outline: none;
+}
+
+.site-header .site-brand:visited {
+  text-decoration: none !important;
+  color: var(--brand-color);
+}
+
+.site-header .site-brand .brand-logo{
+  height: 36px;
+  width: auto;
+  display: inline-block;
+}
+.site-header .site-brand .brand-text{
+  font-weight: 800;
+  color: var(--brand-color);
+}
+
+/* Improve label contrast and spacing across forms */
+.form-group label,
+label{
+  color: var(--label-color) !important;
+  font-weight: var(--label-weight) !important;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* Slightly darken placeholders/inputs for improved accessibility */
+input[type="text"],
+input[type="email"],
+select,
+textarea{
+  color: #0b1220;
+}
+
+/* Success / error message emphasis */
+.success-message{ color: #065f46; font-weight:700; }
+.error-message{ color: #7f1d1d; font-weight:700; }
+
+/* Footer small tweak */
+.site-footer .site-container span{ color: #374151; }

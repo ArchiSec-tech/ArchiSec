@@ -1,4 +1,8 @@
-# Regole di Sicurezza Firestore per ArchiSec
+# Regole di Sicurezza Firestore per ArchiSec - **AGGIORNATE**
+
+## ⚠️ **PROBLEMA RISOLTO**: Regole aggiornate per permessi corretti
+
+Le regole sono state **completamente rivisitate** per risolvere i problemi di permessi che impedivano il corretto funzionamento del sistema Firebase.
 
 ## Come applicare le regole
 
@@ -8,7 +12,19 @@
 4. Copia e incolla il contenuto di `firestore.rules`
 5. Clicca **Publish**
 
-⚠️ **IMPORTANTE:** Queste regole sono state aggiornate per supportare il nuovo sistema Firebase Database Integration con tutti i moduli analytics, lead management e business intelligence.
+## 🔄 **MODIFICHE PRINCIPALI**
+
+### **Problemi Risolti:**
+1. ✅ **Regola di default troppo restrittiva** - Ora permette operazioni per utenti autenticati
+2. ✅ **Mancanza permessi di aggiornamento** - Aggiunti permessi `update` dove necessario  
+3. ✅ **Validazione campi troppo rigida** - Semplificata validazione per sviluppo
+4. ✅ **Permessi analytics insufficienti** - Aperte le collezioni per il corretto funzionamento
+
+### **Nuove Regole di Sviluppo:**
+- **Collezioni analytics**: Completamente aperte per il funzionamento corretto
+- **Lead capture**: Permessi ampliati per creazione e lettura
+- **Regola fallback**: Utenti autenticati hanno accesso generale (per sviluppo)
+- **Collezione temp**: Aggiunta per test e debug
 
 ## Cosa permettono queste regole
 

@@ -29,9 +29,11 @@
   <link rel="stylesheet" href="./vars.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./css/auth.css">
+  <link rel="stylesheet" href="./css/bug-fixes.css">
   
   <!-- Scripts -->
   <script src="js/main.js" defer></script>
+  <script src="js/bug-fixes.js" defer></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -43,6 +45,7 @@
     <!-- Navigation Header -->
     <nav class="site-header">
       <div class="header-inner">
+        <div class="site-brand"></div>
         <a href="index.html" class="site-brand">
           <img src="images/Logo minimal ArchiSec.png" alt="ArchiSec Logo" class="brand-logo" />
           <span class="brand-text">ArchiSec</span>
@@ -172,6 +175,36 @@
       </div>
     </section>
 
+    <!-- References Section -->
+    <section class="references-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">I Nostri Partner</h2>
+          <p class="section-description">Collaboriamo con leader del settore per offrire soluzioni all'avanguardia</p>
+        </div>
+        <div class="references-grid">
+          <div class="reference-card">
+            <div class="reference-image">
+              <img src="images/avatar-10.png" alt="Partner 1" />
+            </div>
+            <div class="reference-content">
+              <h3 class="reference-title">Sicurezza Integrata SRL</h3>
+              <p class="reference-description">Specializzati in soluzioni di threat intelligence e monitoraggio continuo delle infrastrutture critiche.</p>
+            </div>
+          </div>
+          <div class="reference-card">
+            <div class="reference-image">
+              <img src="images/cyber-security-10.png" alt="Partner 2" />
+            </div>
+            <div class="reference-content">
+              <h3 class="reference-title">CyberShield Technologies</h3>
+              <p class="reference-description">Leader nell'implementazione di sistemi di difesa per attacchi avanzati persistenti (APT).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section class="newsletter-section">
       <div class="container">
@@ -283,9 +316,17 @@
         card.style.transform = 'translateY(30px)';
         observer.observe(card);
       });
+      
+      // Observe reference cards
+      document.querySelectorAll('.reference-card').forEach((card, index) => {
+        // Set initial state
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        observer.observe(card);
+      });
     });
     
-    // Newsletter form handling
+    // Newsletter form handling with enhanced Firebase integration
     document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -308,12 +349,41 @@
         const dbInstance = window.db;
         if (dbInstance) {
           // Save newsletter subscription to Firestore
-          await dbInstance.collection('newsletter_subscriptions').add({
+          const subscriptionData = {
             email: email,
             subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
             status: 'active',
-            source: 'homepage'
+            source: 'homepage',
+            consent: true
+          };
+          
+          // Add to newsletter_subscriptions collection
+          await dbInstance.collection('newsletter_subscriptions').add(subscriptionData);
+          
+          // Also add to leads collection for marketing purposes
+          await dbInstance.collection('leads').add({
+            email: email,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            source: 'newsletter',
+            status: 'subscribed',
+            consent: true
           });
+          
+          // Track in analytics if available
+          if (window.userAnalytics) {
+            window.userAnalytics.trackEvent('newsletter_signup', {
+              email: email,
+              source: 'homepage'
+            });
+          }
+          
+          // Track in lead manager if available
+          if (window.leadManager) {
+            window.leadManager.trackTouchpoint('newsletter_signup', {
+              email: email,
+              source: 'homepage'
+            });
+          }
         }
         
         successMsg.style.display = 'block';
@@ -330,7 +400,8 @@
         successMsg.style.display = 'none';
       }
     });
-  });    // Improved header scroll effect with throttling
+    
+    // Improved header scroll effect with throttling
     let ticking = false;
     function updateHeader() {
       const header = document.querySelector('.site-header');

@@ -31,6 +31,99 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./css/auth.css">
   
+  <style>
+    /* Comments Styles */
+    .comments-section {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .comments-container {
+      margin-bottom: 2rem;
+    }
+    
+    .comment {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--primary-color);
+    }
+    
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comment-date {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .comment-text {
+      color: #374151;
+      line-height: 1.6;
+    }
+    
+    .comments-form-container {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    
+    .comments-form-container h4 {
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .comments-form .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .comments-form input,
+    .comments-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.875rem;
+    }
+    
+    .comments-form input:focus,
+    .comments-form textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
+    
+    .comments-form textarea {
+      resize: vertical;
+    }
+    
+    .success-message, .error-message {
+      padding: 0.75rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .success-message {
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    
+    .error-message {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+  </style>
+  
   <!-- Scripts -->
   <script src="js/main.js" defer></script>
   <script src="js/blog.js" defer></script>
@@ -132,6 +225,27 @@
           </div>
           <a href="#" class="card-link">Leggi l'articolo completo</a>
         </div>
+        
+        <!-- Comments Section -->
+        <div class="comments-section">
+          <div class="comments-container" data-article-id="ml-threat-detection"></div>
+          
+          <div class="comments-form-container">
+            <h4>Lascia un commento</h4>
+            <form class="comments-form" data-article-id="ml-threat-detection">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Il tuo nome" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="La tua email" required>
+              </div>
+              <div class="form-group">
+                <textarea name="comment" rows="4" placeholder="Il tuo commento..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Invia Commento</button>
+            </form>
+          </div>
+        </div>
       </article>
 
       <!-- Secondo Articolo -->
@@ -148,6 +262,27 @@
             <span class="card-read-time">15 min</span>
           </div>
           <a href="#" class="card-link">Leggi l'articolo completo</a>
+        </div>
+        
+        <!-- Comments Section -->
+        <div class="comments-section">
+          <div class="comments-container" data-article-id="zero-trust-implementation"></div>
+          
+          <div class="comments-form-container">
+            <h4>Lascia un commento</h4>
+            <form class="comments-form" data-article-id="zero-trust-implementation">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Il tuo nome" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="La tua email" required>
+              </div>
+              <div class="form-group">
+                <textarea name="comment" rows="4" placeholder="Il tuo commento..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Invia Commento</button>
+            </form>
+          </div>
         </div>
       </article>
     </section>
@@ -356,5 +491,20 @@
       });
     });
   </script>
+
+  <!-- Firebase Scripts (v8 compat) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  
+  <!-- Firebase Config -->
+  <script src="js/firebase-config.js"></script>
+
+  <!-- Firebase Database Integration Modules -->
+  <script src="js/modules/analytics/user-analytics.js"></script>
+  <script src="js/modules/lead/lead-manager.js"></script>
+  <script src="js/modules/business/business-data-manager.js"></script>
+  <script src="js/firebase-database-integration.js"></script>
+
 </body>
 </html>

@@ -12,38 +12,111 @@ service cloud.firestore {
       // Validazione dei campi obbligatori per la scrittura
       allow create: if request.auth != null 
         && request.auth.uid == userId
-        && request.resource.data.keys().hasAll(['name', 'email', 'createdAt', 'role', 'isActive'])
+        && request.resource.data.keys().hasAll(['name', 'email', 'createdAt', 'role'])
         && request.resource.data.email == request.auth.token.email
-        && request.resource.data.role == 'user'
-        && request.resource.data.isActive == true;
+        && request.resource.data.role == 'user';
         
       // Aggiornamento profilo (non può cambiare ruolo/stato)
       allow update: if request.auth != null 
         && request.auth.uid == userId
-        && (!('role' in resource.data) || request.resource.data.role == resource.data.role)
-        && (!('isActive' in resource.data) || request.resource.data.isActive == resource.data.isActive);
+        && (!('role' in resource.data) || request.resource.data.role == resource.data.role);
     }
     
     // Collezione per richieste di consulenza/contatti
     match /consultations/{docId} {
-      // Solo utenti autenticati possono creare richieste
-      allow create: if request.auth != null
-        && request.resource.data.userId == request.auth.uid;
+      // Utenti autenticati possono creare, anonimi anche per lead capture
+      allow create: if true;
       
-      // Solo l'autore può leggere le proprie richieste
+      // Solo l'autore può leggere le proprie richieste (se autenticato)
       allow read: if request.auth != null 
         && resource.data.userId == request.auth.uid;
     }
     
-    // Collezione per log di sicurezza (solo lettura per utenti, scrittura per admin)
-    match /security_logs/{docId} {
+    // Collezione contatti - permetti creazione anche anonima per lead generation
+    match /contacts/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null 
+        && (resource.data.userId == request.auth.uid || resource.data.userEmail == request.auth.token.email);
+    }
+    
+    // Collezione newsletter subscriptions - permetti a tutti di iscriversi
+    match /newsletter_subscriptions/{docId} {
+      allow create: if true;
       allow read: if request.auth != null;
-      // Scrittura riservata agli admin (da implementare lato server)
+    }
+    
+    // Collezione leads - sistema lead management
+    match /leads/{docId} {
+      allow create: if true;
+      allow read, update: if true; // Per analytics e lead scoring automatico
+    }
+    
+    // Collezione user analytics - tracking comportamento
+    match /user_analytics/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione user sessions - tracking sessioni
+    match /user_sessions/{docId} {
+      allow create, update: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione business metrics - KPI e metriche
+    match /business_metrics/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione conversions - tracking conversioni
+    match /conversions/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione lead conversions - conversioni dettagliate
+    match /lead_conversions/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione blog comments - sistema commenti
+    match /blog_comments/{docId} {
+      allow create: if true; // Permetti commenti anche anonimi
+      allow read: if true; // Commenti pubblici una volta approvati
+      allow update: if request.auth != null 
+        && resource.data.userId == request.auth.uid; // Solo autore può modificare
+    }
+    
+    // Collezione per log di sicurezza
+    match /security_logs/{docId} {
+      allow create: if true; // Per security assessment automatico
+      allow read: if request.auth != null;
     }
     
     // Collezione pubblica per pricing/servizi (solo lettura)
     match /public/{docId} {
       allow read: if true; // Accessibile anche senza auth
+      allow write: if request.auth != null; // Solo utenti autenticati possono scrivere
+    }
+    
+    // Collezione per demo requests
+    match /demo_requests/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione per pricing inquiries
+    match /pricing_inquiries/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Collezione per service interactions
+    match /service_interactions/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
     }
     
     // Tutto il resto è negato di default

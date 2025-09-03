@@ -17,8 +17,8 @@ Thumbs.db
 .env.production
 
 # Firebase configuration (contains sensitive data)
-js/firebase-config.js
 js/firebase-config.local.js
+firebase-config.ignore.js
 
 # Backup files
 *-backup.*

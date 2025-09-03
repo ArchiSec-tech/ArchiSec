@@ -30,10 +30,12 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./css/auth.css">
   <link rel="stylesheet" href="./css/bug-fixes.css">
+  <link rel="stylesheet" href="./css/security-scanner.css">
   
   <!-- Scripts -->
   <script src="js/main.js" defer></script>
   <script src="js/bug-fixes.js" defer></script>
+  <script src="js/security-scanner.js" defer></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -170,6 +172,48 @@
           <div class="stat-card">
             <div class="stat-number">500+</div>
             <div class="stat-label">Minacce Neutralizzate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Scanner Section -->
+    <section class="security-scanner-section">
+      <div class="container">
+        <div class="scanner-container">
+          <div class="scanner-header">
+            <h2 class="scanner-title">Scanner Sicurezza Gratuito</h2>
+            <p class="scanner-description">
+              Inserisci il tuo sito web per un controllo immediato delle vulnerabilità principali. 
+              Scopri i rischi di sicurezza e ricevi raccomandazioni personalizzate per proteggere la tua presenza online.
+            </p>
+          </div>
+          
+          <div class="scanner-form-container">
+            <form class="scanner-form" id="securityScanForm">
+              <div class="scanner-input-group">
+                <input 
+                  type="url" 
+                  id="websiteUrl" 
+                  placeholder="https://example.com" 
+                  required
+                  aria-label="URL del sito web da scansionare"
+                >
+                <button type="submit" class="scanner-btn" id="scanButton">
+                  Scansiona
+                </button>
+              </div>
+              <div class="scanner-disclaimer">
+                <small>
+                  🔒 La tua privacy è importante: non memorizziamo i dati del tuo sito. 
+                  Scansione gratuita limitata ai controlli base di sicurezza.
+                </small>
+              </div>
+            </form>
+          </div>
+
+          <div id="scanResults" class="scan-results">
+            <!-- I risultati della scansione verranno inseriti qui via JavaScript -->
           </div>
         </div>
       </div>

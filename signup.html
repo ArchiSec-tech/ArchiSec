@@ -121,7 +121,7 @@
                     <input type="tel" id="signupPhone" placeholder="Opzionale">
                 </div>
                 
-                <button type="submit" class="auth-btn">Crea Account</button>
+                <button type="submit" class="auth-btn" disabled>Caricamento...</button>
                 
                 <div class="auth-switch">
                     Hai già un account? <a href="login.html">Accedi qui</a>
@@ -147,9 +147,56 @@
             const form = document.getElementById('signupForm');
             const errorDiv = document.getElementById('signupError');
             const successDiv = document.getElementById('signupSuccess');
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            // Wait for Firebase to be ready
+            let firebaseReady = false;
+            
+            function waitForFirebase() {
+                return new Promise((resolve) => {
+                    let attempts = 0;
+                    const maxAttempts = 30; // 3 seconds max
+                    
+                    function checkFirebase() {
+                        attempts++;
+                        
+                        if (typeof firebase !== 'undefined' && 
+                            typeof firebase.auth === 'function' && 
+                            typeof firebase.firestore === 'function') {
+                            firebaseReady = true;
+                            console.log('✅ Firebase is ready for signup');
+                            resolve(true);
+                        } else if (attempts < maxAttempts) {
+                            setTimeout(checkFirebase, 100);
+                        } else {
+                            console.error('❌ Firebase timeout after 3 seconds');
+                            resolve(false);
+                        }
+                    }
+                    
+                    checkFirebase();
+                });
+            }
+            
+            // Initialize Firebase readiness check
+            waitForFirebase().then((ready) => {
+                if (ready) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Crea Account';
+                } else {
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Servizio non disponibile';
+                }
+            });
             
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                
+                if (!firebaseReady) {
+                    errorDiv.textContent = 'Servizio di autenticazione in caricamento. Riprova tra qualche secondo.';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
                 
                 const name = document.getElementById('signupName').value;
                 const email = document.getElementById('signupEmail').value;
@@ -162,21 +209,29 @@
                     errorDiv.style.display = 'none';
                     successDiv.style.display = 'none';
 
-                    // Ensure Firebase Auth/Firestore are initialized
-                    const authInstance = window.auth;
-                    const dbInstance = window.db;
-                    if (!authInstance || !dbInstance) {
-                        errorDiv.textContent = 'Servizio di autenticazione non pronto. Riprova tra qualche secondo.';
-                        errorDiv.style.display = 'block';
-                        return;
+                    // Check if Firebase is ready
+                    if (typeof firebase === 'undefined') {
+                        throw new Error('Firebase not loaded');
                     }
 
+                    // Get Firebase services (initialize if needed)
+                    const auth = firebase.auth();
+                    const db = firebase.firestore();
+                    
+                    if (!auth || !db) {
+                        throw new Error('Firebase services not available');
+                    }
+
+                    console.log('🔥 Creating user account...');
+
                     // Crea account Firebase
-                    const userCredential = await authInstance.createUserWithEmailAndPassword(email, password);
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                     const user = userCredential.user;
                     
+                    console.log('✅ User account created, saving additional data...');
+                    
                     // Salva dati aggiuntivi in Firestore
-                    await dbInstance.collection('users').doc(user.uid).set({
+                    await db.collection('users').doc(user.uid).set({
                         name: name,
                         email: email,
                         company: company || '',
@@ -185,6 +240,8 @@
                         role: 'user',
                         isActive: true
                     });
+                    
+                    console.log('✅ User data saved to Firestore');
                     
                     // Mostra successo
                     successDiv.textContent = 'Registrazione completata! Reindirizzamento in corso...';
@@ -197,13 +254,14 @@
                     
                 } catch (error) {
                     console.error('Errore registrazione:', error);
-                    errorDiv.textContent = getErrorMessage(error.code);
+                    errorDiv.textContent = getErrorMessage(error.code || error.message);
                     errorDiv.style.display = 'block';
                 }
             });
             
             // Funzione per tradurre errori
             function getErrorMessage(errorCode) {
+                console.log('🔍 Error code:', errorCode);
                 switch (errorCode) {
                     case 'auth/email-already-in-use':
                         return 'Questa email è già registrata.';
@@ -211,18 +269,48 @@
                         return 'Email non valida.';
                     case 'auth/weak-password':
                         return 'La password deve essere di almeno 6 caratteri.';
+                    case 'auth/network-request-failed':
+                        return 'Errore di connessione. Controlla la tua connessione internet.';
+                    case 'auth/internal-error':
+                        return 'ERRORE DI SVILUPPO: Il dominio locale non è autorizzato in Firebase. Vai su localhost:8000 o aggiungi 127.0.0.1 ai domini autorizzati nella console Firebase.';
+                    case 'Firebase not loaded':
+                        return 'Servizio di autenticazione in caricamento. Riprova tra qualche secondo.';
+                    case 'Firebase services not available':
+                        return 'Servizi di autenticazione non disponibili. Ricarica la pagina.';
                     default:
-                        return 'Errore: ' + errorCode;
+                        return errorCode ? `Errore: ${errorCode}` : 'Si è verificato un errore imprevisto.';
                 }
             }
         });
     </script>
 
-    <!-- Firebase Database Integration Modules -->
-    <script src="js/modules/analytics/user-analytics.js"></script>
-    <script src="js/modules/lead/lead-manager.js"></script>
-    <script src="js/modules/business/business-data-manager.js"></script>
-    <script src="js/firebase-database-integration.js"></script>
+    <!-- Essential Firebase Scripts Only -->
+    <script>
+        console.log('🔍 Loading essential scripts for signup...');
+        
+        // Only load Firebase config if it exists
+        if (typeof window.__FIREBASE_CONFIG__ === 'undefined') {
+            console.warn('⚠️ Firebase config not loaded, signup may not work');
+        } else {
+            console.log('✅ Firebase config loaded');
+        }
+        
+        // Initialize Firebase with error handling
+        try {
+            if (typeof firebase !== 'undefined' && firebase.apps.length === 0) {
+                firebase.initializeApp(window.__FIREBASE_CONFIG__);
+                console.log('✅ Firebase initialized for signup');
+                
+                // Initialize Firebase services and make them globally available
+                window.auth = firebase.auth();
+                window.db = firebase.firestore();
+                
+                console.log('✅ Firebase Auth and Firestore initialized');
+            }
+        } catch (error) {
+            console.error('❌ Firebase initialization error:', error);
+        }
+    </script>
 
 </body>
 </html>

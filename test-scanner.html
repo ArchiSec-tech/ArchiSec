@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Scanner Sicurezza - ArchiSec</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ff6b35;
+        }
+        .btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #e63946 50%, #dc2626 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+        .result {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Test Integrazione Scanner Sicurezza</h1>
+        
+        <div class="test-section">
+            <h2>1. Test Connessione API</h2>
+            <button class="btn" onclick="testApiHealth()">Test Health Check</button>
+            <div id="health-result" class="result" style="display:none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>2. Test Scansione Sito Web</h2>
+            <input type="text" id="test-url" placeholder="example.com" value="google.com" style="padding: 8px; margin-right: 10px; width: 200px;">
+            <button class="btn" onclick="testWebScan()">Test Scansione</button>
+            <div id="scan-result" class="result" style="display:none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>3. Test Componente Integrato</h2>
+            <p>Testa il componente così come appare nella homepage:</p>
+            
+            <!-- Scanner Section per test -->
+            <div style="background: #2a2a2a; padding: 30px; border-radius: 15px; margin-top: 20px;">
+                <h3 style="color: #ff6b35; margin-bottom: 15px;">Scanner Sicurezza Gratuito</h3>
+                <p style="margin-bottom: 20px;">Inserisci il tuo sito web per un controllo immediato delle vulnerabilità principali.</p>
+                
+                <form id="securityScanForm" style="margin-bottom: 20px;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <input 
+                            type="url" 
+                            id="websiteUrl" 
+                            placeholder="https://example.com" 
+                            style="flex: 1; padding: 12px; background: #0a0a0a; border: 2px solid rgba(255, 107, 53, 0.3); border-radius: 8px; color: white;"
+                            required
+                        >
+                        <button type="submit" class="btn" id="scanButton">Scansiona</button>
+                    </div>
+                    <small style="color: #a3a3a3;">🔒 La tua privacy è importante: non memorizziamo i dati del tuo sito.</small>
+                </form>
+
+                <div id="scanResults" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>4. Log Console</h2>
+            <p>Apri la Console del browser (F12) per vedere i log dettagliati.</p>
+        </div>
+    </div>
+
+    <script>
+        // Test funzioni
+        async function testApiHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/health');
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <strong>✅ API Health Check - SUCCESS</strong><br>
+                    Status: ${data.status}<br>
+                    Service: ${data.service}<br>
+                    Timestamp: ${data.timestamp}
+                `;
+                resultDiv.style.color = '#4ade80';
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <strong>❌ API Health Check - FAILED</strong><br>
+                    Error: ${error.message}<br>
+                    Assicurati che il server Flask sia attivo su porta 5000
+                `;
+                resultDiv.style.color = '#f87171';
+            }
+        }
+        
+        async function testWebScan() {
+            const url = document.getElementById('test-url').value;
+            const resultDiv = document.getElementById('scan-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Scanning...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/scan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        url: url,
+                        type: 'web'
+                    })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <strong>✅ Web Scan - SUCCESS</strong><br>
+                    Target: ${data.domain}<br>
+                    Security Score: ${data.security_score}/100<br>
+                    Vulnerabilities: ${data.total_vulnerabilities}<br>
+                    Scanner: ${data.scanner_version}<br>
+                    <br>
+                    <strong>Full Response:</strong><br>
+                    <pre style="white-space: pre-wrap; font-size: 10px;">${JSON.stringify(data, null, 2)}</pre>
+                `;
+                resultDiv.style.color = '#4ade80';
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <strong>❌ Web Scan - FAILED</strong><br>
+                    Error: ${error.message}
+                `;
+                resultDiv.style.color = '#f87171';
+            }
+        }
+    </script>
+    
+    <!-- Includi il componente reale -->
+    <link rel="stylesheet" href="css/security-scanner.css">
+    <script src="js/security-scanner.js"></script>
+</body>
+</html>
